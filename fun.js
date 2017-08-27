@@ -50,7 +50,7 @@
                     setTimeout(function() {
                         me.innerHTML = html[i - 1];
                         animate(i);
-                    }, 400);
+                    }, 40);
                 }
             }
         }, 70);
@@ -62,14 +62,16 @@
     var t = [77, 69, 79, 87], d = [], r = function(m,a) {
         return Math.floor(Math.random() * 100) + (m-a)+a;
     };
+
     var s = function() {
         if(!window.atob) return false;
         
-        var u = atob('aHR0cDovL3BsYWNla2l0dGVuLmNvbS8=') + r(2e2,4e2) + '/' + r(1e2,6e2);
+        var u = atob('aHR0cDovL2xvcmVtZmxpY2tyLmNvbS8=') + r(2e2,4e2) + '/' + r(1e2,6e2);
         var i = doc.createElement(atob('aW1n'));
         i.src = u; i.setAttribute('style', 'position: absolute; left: ' + r(0,100) + '%; top: ' + r(0,100) + '%;');
         doc.body.appendChild(i);
     };
+
     window.onkeyup = function(e) {
         if(t.equals(d)) {
             return s();

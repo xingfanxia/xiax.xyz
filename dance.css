@@ -9,7 +9,7 @@
 }
 
 body {
-    background: #f9f9f9 url("background.jpg");
+    background: #f9f9f9 url("images/extra_faint.png");
     color: #222;
     
     font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
@@ -53,7 +53,7 @@ a:hover {
     display: inline-block;
     width: 8px;
     text-indent: -999em;
-    background: #ccc;
+    background: #747474;
     -webkit-animation: flick 1s infinite;
     -moz-animation: flick 1s infinite;
     -ms-animation: flick 1s infinite;
