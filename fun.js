@@ -32,10 +32,14 @@
         //  Censor the page
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        action_list = ["motd", "Who am I?", "What I do?", "Gamer?", "Do you write?", "I have some crazy ideas...", "Team up?"]
+        action_list = ["motd", "who_am_i", "What_i_do", "viewer.isInstanceof(gamer) == True", "blog", "I have some crazy ideas...", "projects", "what_i_am_up_to", "opportunities"]
         var inty = setInterval(function() {
             //  MOAR TEXTS
-            me.innerHTML = "me@xiax.tech:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
+            if (i == action_list.length-1) {
+                me.innerHTML = html[i].substr(0, c) + '<span class="typing">|</span>';
+            } else {
+                me.innerHTML = "me@xiax.tech:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
+            }
             // console.log(html[i].substr(c-1, c+1))
             // if (html[i].substring(c-2, c+2).includes("<a>")) {
             //     console.log("a tag!")
@@ -54,10 +58,10 @@
                     setTimeout(function() {
                         me.innerHTML = html[i - 1];
                         animate(i);
-                    }, 400);
+                    }, 1500);
                 }
             }
-        }, 70);
+        }, 50);
     };
     
     animate(0);
