@@ -1,0 +1,84 @@
+/* C to the S to the S */
+@import "keyframe.css";
+
+* {
+    margin: 0;
+    padding: 0;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: #f9f9f9 url("background.jpg");
+    color: #222;
+    
+    font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    letter-spacing: -0.01em;
+}
+
+ul.content {
+    list-style: none;
+    position: absolute;
+    left: 130px;
+    top: 40%;
+    width: 500px;
+    margin-top: -62px;
+}
+
+ul li {
+    padding: 10px 0;
+}
+
+#first-line {
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    border-bottom: 1px dotted #ccc;
+    background: #111;
+    color: #fff;
+}
+
+a:hover {
+    background: #84a403;
+    color: #fff;
+}
+
+.typing {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    text-indent: -999em;
+    background: #ccc;
+    -webkit-animation: flick 1s infinite;
+    -moz-animation: flick 1s infinite;
+    -ms-animation: flick 1s infinite;
+    -o-animation: flick 1s infinite;
+    animation: flick 1s infinite;
+}
+
+
+
+/*.dollar:before {
+    content: '$';
+    padding-right: 20px;
+    
+    color: #50657b;
+}*/
+
+@media (max-width: 550px) {
+    body {
+        font-size: 15px;
+        min-height: 530px;
+    }
+    ul.content {
+        width: 80%;
+        top: 20%;
+        left: 10%;
+        min-width: 290px;
+    }
+}
