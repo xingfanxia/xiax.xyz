@@ -32,10 +32,10 @@
         //  Censor the page
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        
+        action_list = ["motd", "Who am I?", "What I do?", "Gamer?", "Do you write?", "I have some crazy ideas...", "Team up?"]
         var inty = setInterval(function() {
             //  MOAR TEXTS
-            me.innerHTML = html[i].substr(0, c) + '<span class="typing">|</span>';
+            me.innerHTML = "me@xiax.tech:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
             // console.log(html[i].substr(c-1, c+1))
             // if (html[i].substring(c-2, c+2).includes("<a>")) {
             //     console.log("a tag!")
