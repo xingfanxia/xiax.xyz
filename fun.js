@@ -36,7 +36,11 @@
         var inty = setInterval(function() {
             //  MOAR TEXTS
             me.innerHTML = html[i].substr(0, c) + '<span class="typing">|</span>';
-
+            // console.log(html[i].substr(c-1, c+1))
+            // if (html[i].substring(c-2, c+2).includes("<a>")) {
+            //     console.log("a tag!")
+            // } // Need to speed up here....
+            
             //  What's the best programming language in the world?
             //  Not this one.
             c++;
@@ -50,7 +54,7 @@
                     setTimeout(function() {
                         me.innerHTML = html[i - 1];
                         animate(i);
-                    }, 40);
+                    }, 400);
                 }
             }
         }, 70);
@@ -59,7 +63,7 @@
     animate(0);
     
     //  Totally not easter egg stuff
-    var t = [77, 69, 79, 87], d = [], r = function(m,a) {
+    var t = [82, 85, 65], d = [], r = function(m,a) {
         return Math.floor(Math.random() * 100) + (m-a)+a;
     };
 
