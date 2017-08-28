@@ -9,11 +9,11 @@
 }
 
 body {
-    background: #f9f9f9 url("images/inverse_color.png");
-    color: #222;
+    background: #060606 url("images/dark_theme.png");
+    color: #c7c7c7;
     
     font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
-    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    text-shadow: 0 1px 1px rgba(255,255,255,.25);
     letter-spacing: -0.01em;
 }
 
@@ -36,16 +36,16 @@ ul li {
 
 a {
     text-decoration: none;
-    color: #111;
+    color: #e5eef4;
     font-weight: bold;
     border-bottom: 1px dotted #ccc;
-    background: #111;
-    color: #fff;
+    background: #e5eef4;
+    color: #111;
 }
 
 a:hover {
     background: #84a403;
-    color: #fff;
+    color: #111;
 }
 
 .typing {
