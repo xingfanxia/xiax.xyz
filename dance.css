@@ -9,7 +9,7 @@
 }
 
 body {
-    background: #f9f9f9 url("images/extra_faint.png");
+    background: #f9f9f9 url("images/inverse_color.png");
     color: #222;
     
     font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
