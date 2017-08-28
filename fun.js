@@ -67,7 +67,7 @@
     animate(0);
     
     //  Totally not easter egg stuff
-    var t = [82, 85, 65], d = [], r = function(m,a) {
+    var t = [65,78,71,69,76], d = [], r = function(m,a) {
         return Math.floor(Math.random() * 100) + (m-a)+a;
     };
 
