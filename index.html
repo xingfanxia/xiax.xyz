@@ -11,7 +11,6 @@
         This is originally scripted by Ares Wang
         <meta name="author" content="Ares Wang"> -->
         <meta name="author" content="Xingfan Xia">
-        <link rel="stylesheet" href="dance.css">
         <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -29,6 +28,25 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
+        <script>
+            <!--
+            function getStylesheet() {
+                  var currentTime = new Date().getHours();
+                  if (0 <= currentTime&&currentTime < 6) {
+                   document.write("<link rel='stylesheet' href='css/night.css' type='text/css'>");
+                  }
+                  if (6 <= currentTime&&currentTime < 18) {
+                   document.write("<link rel='stylesheet' href='css/day.css' type='text/css'>");
+                  }
+                  if (18 <= currentTime&&currentTime <= 24) {
+                   document.write("<link rel='stylesheet' href='css/night.css' type='text/css'>");
+                  }
+            }
+
+            getStylesheet();
+            -->
+        </script>
+        <noscript><link href="css/night.css" rel="stylesheet"></noscript>
     </head>
 
     <body>
