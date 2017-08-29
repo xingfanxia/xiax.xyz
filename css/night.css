@@ -8,13 +8,17 @@
     -webkit-font-smoothing: antialiased;
 }
 
-body {
-    background: #060606 url("../images/dark_theme.png");
-    color: #c7c7c7;
-    font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
-    text-shadow: 0 1px 1px rgba(255,255,255,.25);
-    letter-spacing: -0.01em;
-}
+    body {
+        background: url("../images/dark_mobile.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        color:#c7c7c7;
+        font: 15px/24px "Bitstream Vera Sans Mono", "Anonymous Pro", "Consolas", monospace;
+        text-shadow: 0 1px 1px rgba(255,255,255,.25);
+        letter-spacing: -0.01em;
+    }
 
 @media (min-width: 1366px) {
     body {
