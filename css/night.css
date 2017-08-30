@@ -9,7 +9,7 @@
 }
 
 body {
-    background: url("../images/dark_mobile.png") no-repeat center center fixed;
+    background: #0c0c0c url("../images/dark_mobile.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -22,7 +22,7 @@ body {
 
 @media (min-width: 1366px) {
     body {
-        background: url("../images/dark_theme.png") no-repeat center center fixed;
+        background: #0c0c0c url("../images/dark_theme.png") no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
