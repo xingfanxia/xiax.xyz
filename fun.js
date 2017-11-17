@@ -33,7 +33,7 @@
         //  Censor the page
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        action_list = ["motd", "who_am_i", "What_i_do", "viewer.isInstanceof(gamer) == True", "blog", "I have some crazy ideas...", "projects", "what_i_am_up_to", "opportunities"]
+        action_list = ["motd", "who_am_i", "What_i_do", "projects", "blog", "I have some crazy ideas...", , "what_i_am_up_to", "viewer.isInstanceof(gamer) == True", "opportunities"]
         var inty = setInterval(function() {
             //  MOAR TEXTS
             if (i == action_list.length-1) {
