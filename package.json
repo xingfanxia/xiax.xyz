@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "deploy-aws-s3-cloudfront --bucket xiax.ai --exclude node_modules --exclude .git --profile personal --distribution E33BYL0X453DW4" 
+    "deploy": "deploy-aws-s3-cloudfront --bucket xiax.ai --exclude node_modules --exclude .git --profile personal --distribution E33BYL0X453DW4"
   },
   "repository": {
     "type": "git",
