@@ -39,7 +39,7 @@
             if (i == action_list.length-1) {
                 me.innerHTML = html[i].substr(0, c) + '<span class="typing">|</span>';
             } else {
-                me.innerHTML = "me@xiax.ai:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
+                me.innerHTML = "me@xiax.dev:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
             }
             // console.log(html[i].substr(c-1, c+1))
             // if (html[i].substring(c-2, c+2).includes("<a>")) {
