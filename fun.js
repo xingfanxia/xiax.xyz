@@ -19,50 +19,41 @@
         all[i].innerHTML = '';
     }
         
-    //  Go all Frankenstein and shit
     var animate = function(i) {
         var me = all[i],
-        
             add = 'dollar',
-            
-            //  C = character delay
-            //  D = line delay
-            //  Lies
-            c = 0, d = 0;
-            
-        //  Censor the page
+            c = 0; // character delay
+        
+        // Censor the page
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        action_list = ["Intro", "What???", "What_i_do", "projects", "blog", "I have some crazy ideas...", "what_i_am_up_to", "viewer.isInstanceof(gamer) == True", "opportunities"]
-        var inty = setInterval(function() {
-            //  MOAR TEXTS
-            if (i == action_list.length-1) {
-                me.innerHTML = html[i].substr(0, c) + '<span class="typing">|</span>';
-            } else {
-                me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
-            }
-            // console.log(html[i].substr(c-1, c+1))
-            // if (html[i].substring(c-2, c+2).includes("<a>")) {
-            //     console.log("a tag!")
-            // } // Need to speed up here....
-            
-            //  What's the best programming language in the world?
-            //  Not this one.
-            c++;
-            
-            if(html[i].length < c) {
-                clearInterval(inty);
-                i++;
-                
-                
-                if(all[i]) {
-                    setTimeout(function() {
-                        me.innerHTML = html[i - 1];
-                        animate(i);
-                    }, 1500);
+        action_list = ["Intro", "if type(var) == id", "cat README.md", "ls projects/", "ls blogs/", "if collab(me)", "ls fun_stuffs", "ls jobs/"]
+       
+        // Initialize the animation by setting the prompt.
+        me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + '<span class="typing">|</span>';
+        
+        // Start typing the rest of the content after a 1-second delay.
+        setTimeout(function() {
+            var inty = setInterval(function() {
+                if(c < html[i].length) {
+                    // Update the innerHTML with typed characters from html[i]
+                    me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
+                    c++;
+                } else {
+                    // Once the last character is reached, clear the interval and remove the typing cursor
+                    clearInterval(inty);
+                    me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + html[i];
+                    
+                    // Move to the next element after a 500ms delay
+                    i++;
+                    if(all[i]) {
+                        setTimeout(function() {
+                            animate(i);
+                        }, 500);
+                    }
                 }
-            }
-        }, 12);
+            }, 8);
+        }, 1000); // 1-second delay before typing starts
     };
     
     animate(0);
