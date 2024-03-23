@@ -20,41 +20,66 @@
     }
         
     var animate = function(i) {
+        if (i >= all.length) {
+            return; // Stop if there are no more items to animate.
+        }
         var me = all[i],
             add = 'dollar',
-            c = 0; // character delay
-        
-        // Censor the page
+            c = 0, d = 0; // Character and line indices for typing animation.
+    
+        // Apply the class name to the element.
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        action_list = ["Intro", "if type(var) == id", "cat README.md", "ls projects/", "ls blogs/", "if collab(me)", "ls fun_stuffs", "ls jobs/"]
-       
-        // Initialize the animation by setting the prompt.
-        me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + '<span class="typing">|</span>';
+        var action_list = ["Intro", "if type(var) == id", "cat README.md", "ls projects/", "ls blogs/", "if collab(me)", "ls fun_stuffs", "ls jobs/"];
         
-        // Start typing the rest of the content after a 1-second delay.
-        setTimeout(function() {
-            var inty = setInterval(function() {
-                if(c < html[i].length) {
-                    // Update the innerHTML with typed characters from html[i]
-                    me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + html[i].substr(0, c) + '<span class="typing">|</span>';
-                    c++;
-                } else {
-                    // Once the last character is reached, clear the interval and remove the typing cursor
-                    clearInterval(inty);
-                    me.innerHTML = "me@xiax.xyz:~$ " + action_list[i] + "<br>" + html[i];
-                    
-                    // Move to the next element after a 500ms delay
-                    i++;
-                    if(all[i]) {
-                        setTimeout(function() {
-                            animate(i);
-                        }, 500);
-                    }
-                }
-            }, 8);
-        }, 1000); // 1-second delay before typing starts
+        // Concatenate the prompt and command into fullPrompt
+        var fullPrompt = "me@xiax.xyz:~$ " + action_list[i];
+        var response = html[i]; // The response to be typed after the action.
+    
+        var typeLine = setInterval(function() {
+            // Type out the prompt with action
+            if (c < fullPrompt.length) {
+                me.innerHTML = fullPrompt.substring(0, c) + '<span class="typing">|</span>';
+                c++;
+            } else if (c === fullPrompt.length) {
+                me.innerHTML = fullPrompt + '<span class="typing">|</span>'; // Ensure last character is typed.
+                c++;
+            } else {
+                // Once the fullPrompt is complete, including the last character, start typing the response after a 1s delay
+                clearInterval(typeLine); // Stop typing the prompt and action line
+                setTimeout(function() {
+                    var typeResponse = setInterval(function() {
+                        if (d < response.length) {
+                            me.innerHTML = fullPrompt + "<br>" + response.substring(0, d) + '<span class="typing">|</span>';
+                            d++;
+                        } else {
+                            clearInterval(typeResponse);
+                            me.innerHTML = fullPrompt + "<br>" + response; // Remove the typing cursor
+                            // Move to the next line after a 500ms delay
+                            i++;
+                            if (i < all.length) {
+                                setTimeout(function() {
+                                    animate(i);
+                                }, 1000);
+                            }
+                        }
+                    }, 8);
+                }, 1500); // 1-second delay before typing the response
+            }
+        }, 8);
     };
+    
+    // It's assumed that 'all', 'html', and 'list' variables exist in the scope and are correctly defined elsewhere in the code.
+    
+    // It's assumed that 'all', 'html', and 'list' variables exist in the scope
+    // and are appropriately defined elsewhere in the code.
+    // It's assumed that 'all', 'html', and 'list' variables exist in the scope
+    // and are appropriately defined elsewhere in the code.
+    
+    // Assume html is defined somewhere else in your code.
+    // You must also have an array called `all` that contains the elements to be animated.
+    // html example: var html = ["Line 1 content", "Line 2 content", ...];
+    // all example: var all = document.querySelectorAll('.animated-lines');
     
     animate(0);
     
@@ -74,19 +99,6 @@
         link.setAttribute('href', 'css/night.css');
         d = []
     };
-
-    // var counter = 0, s = setInterval(function(limit) {
-    //     if(!window.atob) return false;
-        
-    //     var u = atob('aHR0cDovL2xvcmVtZmxpY2tyLmNvbS8=') + r(2e2,4e2) + '/' + r(1e2,6e2);
-    //     var i = doc.createElement(atob('aW1n'));
-    //     i.src = u; i.setAttribute('style', 'position: absolute; left: ' + r(0,100) + '%; top: ' + r(0,100) + '%;');
-    //     doc.body.appendChild(i);
-    //     d = [];
-    //     if(counter === limit) {
-    //         clearInterval(s);
-    //     }
-    // }, 1 * 1000); //render cats
 
     var counter = 0, s = function(limit) {
         if(!window.atob) return false;
