@@ -102,3 +102,7 @@ a:hover {
         min-width: 290px;
     }
 }
+
+.white-text {
+    color: black;
+}
