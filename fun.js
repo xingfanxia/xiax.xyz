@@ -30,7 +30,7 @@
         // Apply the class name to the element.
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        var action_list = ["Intro", "if type(var) == id", "cat README.md", "ls projects/", "ls blogs/", "if collab(me)", "ls fun_stuffs", "ls jobs/"];
+        var action_list = ["ping xiax.xyz", "echo $ID", "cat README.md", "ls projects/", "ls blogs/", "find . -maxdepth 1 -name 'collaborate'", "ls fun_stuffs/", "ls jobs/"];
         
         // Concatenate the prompt and command into fullPrompt
         var fullPrompt = "me@xiax.xyz:~$ " + action_list[i];
