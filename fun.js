@@ -50,37 +50,27 @@
                 setTimeout(function() {
                     var typeResponse = setInterval(function() {
                         if (d < response.length) {
-                            me.innerHTML = fullPrompt + "<br>" + response.substring(0, d) + '<span class="typing">|</span>';
+                            me.innerHTML = fullPrompt + "<br>" + '<span class="white-text">' + response.substring(0, d) + '</span><span class="typing">|</span>';
                             d++;
                         } else {
                             clearInterval(typeResponse);
-                            me.innerHTML = fullPrompt + "<br>" + response; // Remove the typing cursor
+                            me.innerHTML = fullPrompt + "<br>" + '<span class="white-text">' + response + '</span>'; // Remove the typing cursor
                             // Move to the next line after a 500ms delay
                             i++;
                             if (i < all.length) {
                                 setTimeout(function() {
                                     animate(i);
-                                }, 1000);
+                                }, 500);
                             }
                         }
                     }, 8);
-                }, 1500); // 1-second delay before typing the response
+                }, 1000); // 1-second delay before typing the response
             }
         }, 8);
     };
     
     // It's assumed that 'all', 'html', and 'list' variables exist in the scope and are correctly defined elsewhere in the code.
-    
-    // It's assumed that 'all', 'html', and 'list' variables exist in the scope
-    // and are appropriately defined elsewhere in the code.
-    // It's assumed that 'all', 'html', and 'list' variables exist in the scope
-    // and are appropriately defined elsewhere in the code.
-    
-    // Assume html is defined somewhere else in your code.
-    // You must also have an array called `all` that contains the elements to be animated.
-    // html example: var html = ["Line 1 content", "Line 2 content", ...];
-    // all example: var all = document.querySelectorAll('.animated-lines');
-    
+
     animate(0);
     
     //  Totally not easter egg stuff
