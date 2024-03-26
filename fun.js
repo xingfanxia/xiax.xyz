@@ -33,7 +33,7 @@
         var action_list = ["ping xiax.xyz", "echo $ID", "cat README.md", "ls projects/", "dig blog.xiax.xyz", "dig collab.xiax.xyz", "ls fun_stuffs/", "ping work.xiax.xyz"];
         
         // Concatenate the prompt and command into fullPrompt
-        var fullPrompt = "me@xiax.xyz:~$ " + action_list[i];
+        var fullPrompt = "visitor@xiax.xyz:~$ " + action_list[i];
         var response = html[i]; // The response to be typed after the action.
     
         var typeLine = setInterval(function() {
