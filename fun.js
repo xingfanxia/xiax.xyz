@@ -53,7 +53,7 @@
     
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
-        var action_list = ["ping xiax.xyz", "echo $ID", "cat README.md", "ls projects/", "dig blog.xiax.xyz", "dig collab.xiax.xyz", "ls fun_stuffs/", "ping work.xiax.xyz"];
+        var action_list = ["ping xiax.xyz", "echo $ID", "cat README.md", "ls projects/", "dig blog.xiax.xyz", "dig collab.xiax.xyz", "ls fun_stuffs/", "dig work.xiax.xyz"];
         
         var fullPrompt = "visitor@xiax.xyz:~$ " + action_list[i];
         var response = html[i]; // The response to be typed after the action.
@@ -87,8 +87,6 @@
             scrollToTyping(me); 
         }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
     };
-    
-    // It's assumed that 'all', 'html', and 'list' variables exist in the scope and are correctly defined elsewhere in the code.
 
     animate(0);
     
