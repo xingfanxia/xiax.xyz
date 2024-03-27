@@ -39,9 +39,9 @@ body {
 ul.content {
     list-style: none;
     position: absolute;
-    left: 130px;
+    left: 10%;
     top: 24%;
-    width: 700px;
+    width: 550px;
     margin-top: -62px;
     bottom: 20%;
 }

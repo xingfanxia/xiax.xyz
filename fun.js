@@ -24,7 +24,25 @@
     document.addEventListener('click', function() {
         speedMultiplier = 20; // Speed up the animation 20 times on mouse click
     });
-    
+
+    function scrollToTyping(element) {
+        // Calculate the bottom position of the element
+        const elementBottom = element.getBoundingClientRect().bottom + window.scrollY;
+        
+        // Optionally, add an offset to scroll a bit beyond the element, if desired
+        const offset = 50; // Adjust this value as needed
+        
+        // Calculate the desired scroll position
+        const scrollPosition = elementBottom + offset - window.innerHeight;
+        
+        if (scrollPosition > window.scrollY) { // Only scroll down if the element is below the current view
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     var animate = function(i) {
         if (i >= all.length) {
             return; // Stop if there are no more items to animate.
@@ -39,7 +57,6 @@
         
         var fullPrompt = "visitor@xiax.xyz:~$ " + action_list[i];
         var response = html[i]; // The response to be typed after the action.
-    
         var typeLine = setInterval(function() {
             if (c < fullPrompt.length) {
                 me.innerHTML = fullPrompt.substring(0, c) + '<span class="typing">|</span>';
@@ -67,6 +84,7 @@
                     }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
                 }, 800 / speedMultiplier); // Adjust delay before typing the response based on speedMultiplier
             }
+            scrollToTyping(me); 
         }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
     };
     
