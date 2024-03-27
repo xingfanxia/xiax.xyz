@@ -19,6 +19,12 @@
         all[i].innerHTML = '';
     }
         
+    var speedMultiplier = 1; // Speed multiplier, initially 1
+
+    document.addEventListener('click', function() {
+        speedMultiplier = 10; // Speed up the animation 5 times on mouse click
+    });
+    
     var animate = function(i) {
         if (i >= all.length) {
             return; // Stop if there are no more items to animate.
@@ -27,26 +33,22 @@
             add = 'dollar',
             c = 0, d = 0; // Character and line indices for typing animation.
     
-        // Apply the class name to the element.
         me.className = add;
         list.style.marginTop = '-' + (((i + 1) * 25) / 2) + 'px';
         var action_list = ["ping xiax.xyz", "echo $ID", "cat README.md", "ls projects/", "dig blog.xiax.xyz", "dig collab.xiax.xyz", "ls fun_stuffs/", "ping work.xiax.xyz"];
         
-        // Concatenate the prompt and command into fullPrompt
         var fullPrompt = "visitor@xiax.xyz:~$ " + action_list[i];
         var response = html[i]; // The response to be typed after the action.
     
         var typeLine = setInterval(function() {
-            // Type out the prompt with action
             if (c < fullPrompt.length) {
                 me.innerHTML = fullPrompt.substring(0, c) + '<span class="typing">|</span>';
                 c++;
             } else if (c === fullPrompt.length) {
-                me.innerHTML = fullPrompt + '<span class="typing">|</span>'; // Ensure last character is typed.
+                me.innerHTML = fullPrompt + '<span class="typing">|</span>';
                 c++;
             } else {
-                // Once the fullPrompt is complete, including the last character, start typing the response after a 1s delay
-                clearInterval(typeLine); // Stop typing the prompt and action line
+                clearInterval(typeLine);
                 setTimeout(function() {
                     var typeResponse = setInterval(function() {
                         if (d < response.length) {
@@ -54,19 +56,18 @@
                             d++;
                         } else {
                             clearInterval(typeResponse);
-                            me.innerHTML = fullPrompt + "<br>" + '<span class="white-text">' + response + '</span>'; // Remove the typing cursor
-                            // Move to the next line after a 500ms delay
+                            me.innerHTML = fullPrompt + "<br>" + '<span class="white-text">' + response + '</span>';
                             i++;
                             if (i < all.length) {
                                 setTimeout(function() {
                                     animate(i);
-                                }, 500);
+                                }, 500 / speedMultiplier); // Adjust delay based on speedMultiplier
                             }
                         }
-                    }, 8);
-                }, 1000); // 1-second delay before typing the response
+                    }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
+                }, 1000 / speedMultiplier); // Adjust delay before typing the response based on speedMultiplier
             }
-        }, 8);
+        }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
     };
     
     // It's assumed that 'all', 'html', and 'list' variables exist in the scope and are correctly defined elsewhere in the code.

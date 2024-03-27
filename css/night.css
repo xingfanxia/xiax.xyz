@@ -41,8 +41,9 @@ ul.content {
     position: absolute;
     left: 130px;
     top: 24%;
-    width: 500px;
+    width: 700px;
     margin-top: -62px;
+    bottom: 20%;
 }
 
 ul li {
@@ -104,4 +105,8 @@ a:hover {
 
 .white-text {
     color: white;
+}
+
+ul li:last-child {
+    padding-bottom: 100px;
 }
