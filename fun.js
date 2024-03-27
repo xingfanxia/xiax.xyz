@@ -30,7 +30,7 @@
         const elementBottom = element.getBoundingClientRect().bottom + window.scrollY;
         
         // Optionally, add an offset to scroll a bit beyond the element, if desired
-        const offset = 50; // Adjust this value as needed
+        const offset = 100; // Adjust this value as needed
         
         // Calculate the desired scroll position
         const scrollPosition = elementBottom + offset - window.innerHeight;
