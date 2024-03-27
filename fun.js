@@ -22,7 +22,7 @@
     var speedMultiplier = 1; // Speed multiplier, initially 1
 
     document.addEventListener('click', function() {
-        speedMultiplier = 10; // Speed up the animation 5 times on mouse click
+        speedMultiplier = 20; // Speed up the animation 20 times on mouse click
     });
     
     var animate = function(i) {
@@ -61,11 +61,11 @@
                             if (i < all.length) {
                                 setTimeout(function() {
                                     animate(i);
-                                }, 500 / speedMultiplier); // Adjust delay based on speedMultiplier
+                                }, 800 / speedMultiplier); // Adjust delay based on speedMultiplier
                             }
                         }
                     }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
-                }, 1000 / speedMultiplier); // Adjust delay before typing the response based on speedMultiplier
+                }, 800 / speedMultiplier); // Adjust delay before typing the response based on speedMultiplier
             }
         }, 8 / speedMultiplier); // Adjust interval based on speedMultiplier
     };
