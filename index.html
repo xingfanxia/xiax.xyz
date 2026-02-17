@@ -1,69 +1,403 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" <head>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<title>A Cat Entertainer | Xingfan Xia</title>
-<meta name="viewport" content="initial-scale=1.0">
-<meta name="description" content="">
-<!--
-        This is originally scripted by Ares Wang
-        <meta name="author" content="Ares Wang"> -->
+<title>Xingfan Xia | CTO @ Compute Labs | Agentic AI Builder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Xingfan Xia - CTO & Co-Founder at Compute Labs. Building multi-agent AI systems. 95% of production code shipped through agentic coding workflows.">
 <meta name="author" content="Xingfan Xia">
-<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Xingfan Xia | Agentic AI Builder">
+<meta property="og:description" content="CTO @ Compute Labs. Building multi-agent AI systems for GPU infrastructure. 95% of production code shipped through Claude Code & Codex.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ax0x.ai">
+
+<link rel="icon" type="image/png" sizes="512x512" href="icons/android-chrome-512x512.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
 <link rel="manifest" href="icons/site.webmanifest">
-<link rel='stylesheet' id='theme' href='css/animation.css' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-<link rel='stylesheet' id='theme' href='css/night.css' type='text/css'>
-<meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta name="theme-color" content="#0a0a0a">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HG92Y4JQ3H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-HG92Y4JQ3H');
 </script>
-<!-- <script>
-    
-    function getStylesheet() {
-        var currentTime = new Date().getHours();
-        if (0 <= currentTime && currentTime < 6) {
-            document.write("<link rel='stylesheet' id='theme' href='css/night.css' type='text/css'>");
-        }
-        if (6 <= currentTime && currentTime < 18) {
-            document.write("<link rel='stylesheet' id='theme' href='css/day.css' type='text/css'>");
-        }
-        if (18 <= currentTime && currentTime <= 24) {
-            document.write("<link rel='stylesheet' id='theme' href='css/night.css' type='text/css'>");
-        }
-    }
 
-    getStylesheet();
-    -->
-<!-- </script> -->
+<style>
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<noscript>
-    <link href="css/night.css" rel="stylesheet"></noscript>
+body {
+    background: #0a0a0a;
+    color: #c9d1d9;
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Ambient background glow */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(52, 211, 153, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+    animation: ambientShift 20s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes ambientShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(2%, -1%) rotate(1deg); }
+    66% { transform: translate(-1%, 1%) rotate(-1deg); }
+}
+
+/* Terminal window */
+.terminal-window {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
+    background: #0d1117;
+    border-radius: 12px;
+    border: 1px solid #21262d;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.03),
+        0 8px 32px rgba(0,0,0,0.4),
+        0 2px 8px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    overflow: hidden;
+}
+
+/* Title bar */
+.terminal-titlebar {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+    background: #161b22;
+    border-bottom: 1px solid #21262d;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: default;
+}
+
+.terminal-btn.close { background: #f85149; }
+.terminal-btn.minimize { background: #d29922; }
+.terminal-btn.maximize { background: #3fb950; }
+
+.terminal-btn:hover.close { background: #ff6b61; }
+.terminal-btn:hover.minimize { background: #e3b341; }
+.terminal-btn:hover.maximize { background: #56d364; }
+
+.terminal-tabs {
+    display: flex;
+    margin-left: 16px;
+    gap: 2px;
+    flex: 1;
+}
+
+.terminal-tab {
+    padding: 6px 16px;
+    font-size: 11px;
+    color: #484f58;
+    background: transparent;
+    border-radius: 6px 6px 0 0;
+    border: none;
+    cursor: default;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-tab.active {
+    color: #c9d1d9;
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-bottom: 1px solid #0d1117;
+    margin-bottom: -1px;
+}
+
+/* Terminal body */
+.terminal-body {
+    padding: 20px 24px;
+    min-height: 420px;
+    max-height: 75vh;
+    overflow-y: auto;
+    font-size: 13.5px;
+    line-height: 1.7;
+    scrollbar-width: thin;
+    scrollbar-color: #21262d #0d1117;
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: #21262d;
+    border-radius: 3px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #30363d;
+}
+
+/* Command lines */
+.terminal-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.terminal-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Prompt styling */
+.prompt-user { color: #3fb950; font-weight: 700; }
+.prompt-at { color: #484f58; }
+.prompt-host { color: #58a6ff; font-weight: 700; }
+.prompt-colon { color: #484f58; }
+.prompt-path { color: #d2a8ff; }
+.prompt-dollar { color: #484f58; }
+.prompt-cmd { color: #f0f6fc; font-weight: 500; }
+.prompt-flag { color: #ffa657; }
+
+/* Output styling */
+.output { color: #c9d1d9; padding-left: 0; }
+.output-highlight { color: #58a6ff; }
+.output-green { color: #3fb950; }
+.output-yellow { color: #d29922; }
+.output-dim { color: #484f58; }
+.output-bold { color: #f0f6fc; font-weight: 700; }
+.output-link {
+    color: #58a6ff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(88, 166, 255, 0.4);
+    transition: all 0.2s ease;
+}
+.output-link:hover {
+    color: #79c0ff;
+    border-bottom-color: #79c0ff;
+}
+.output-chinese {
+    color: #ffa657;
+    font-style: italic;
+}
+
+/* Blinking cursor */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 17px;
+    background: #3fb950;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    border-radius: 1px;
+    box-shadow: 0 0 4px rgba(63, 185, 80, 0.4);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Separator line */
+.separator {
+    border: none;
+    border-top: 1px solid #21262d;
+    margin: 12px 0;
+}
+
+/* Status bar */
+.terminal-statusbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 28px;
+    padding: 0 16px;
+    background: #161b22;
+    border-top: 1px solid #21262d;
+    font-size: 11px;
+    color: #484f58;
+}
+
+.status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3fb950;
+    box-shadow: 0 0 4px rgba(63, 185, 80, 0.5);
+}
+
+/* Social icons */
+.social-icons {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(22, 27, 34, 0.8);
+    color: #484f58;
+    font-size: 17px;
+    text-decoration: none;
+    border: 1px solid #21262d;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.social-icons a:hover {
+    background: rgba(22, 27, 34, 0.95);
+    color: #c9d1d9;
+    border-color: #30363d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Click hint */
+.click-hint {
+    position: fixed;
+    bottom: 76px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #30363d;
+    z-index: 10;
+    transition: opacity 0.5s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    body { padding: 12px; align-items: flex-start; padding-top: 20px; }
+    .terminal-window { max-width: 100%; }
+    .terminal-body { padding: 16px; font-size: 12.5px; max-height: 80vh; }
+    .terminal-tab span.tab-full { display: none; }
+    .terminal-tab span.tab-short { display: inline; }
+}
+
+@media (min-width: 861px) {
+    .terminal-tab span.tab-short { display: none; }
+}
+
+@media (max-width: 480px) {
+    .terminal-body { padding: 12px; font-size: 11px; min-height: 350px; }
+    .terminal-titlebar { height: 36px; padding: 0 12px; }
+    .terminal-btn { width: 10px; height: 10px; }
+    .social-icons { bottom: 16px; gap: 8px; }
+    .social-icons a { width: 36px; height: 36px; font-size: 15px; }
+    .click-hint { bottom: 64px; }
+}
+</style>
 </head>
 
 <body>
-    <ul class="content">
-        <li id="first-line">Welcome. I'm <strong>Xingfan</strong>.</li>
-        <li> > Yeah. We human use {Names} not {030ea34f-d670-48e7-b7a0-a00bb75bdd57} to identify ourselves. It is the status quo of this planet.</li>
-        <li> > An enginner and cat entertainer by day. Enjoy building and creating things from 0 to 1. <br /></li>
-        <li> > Recently, I've been working on a few mahjong related projects. You can learn more <a href="http://nlog.xiax.xyz/projects/" target="_blank">here</a>.</li>
-        <li> > If you are interested, you can also check out <a href="http://nlog.xiax.xyz" target="view_window">my nlog</a>! It's built with a notion database as backend, hence the name.</li>
-        <li> > If you have some great ideas about LLM/AI, or just anything interesting really, find me on <a href="https://github.com/xingfanxia"
-                target="view_window">Github</a> or send me an email! I'm all ears. </li>
-        <li> > I enjoy videos games a lot. But sadly don't have much time playing recently. Hit me on <a href="http://steamcommunity.com/id/ruuuuaaaa/"
-                target="_blank">steam</a>!</li>
-        <li> > To learn more about my professional background, check out my <a href="https://www.linkedin.com/in/xingfanxia/"
-                target="view_window">linkedin</a>! Or download my <a href="xingfan_cv_rev_2024_03_23.pdf" target="view_window">resume</a>.</li>
-    </ul>
-    <script src="fun.js"></script>
-</body>
 
+<div class="terminal-window">
+    <div class="terminal-titlebar">
+        <div class="terminal-buttons">
+            <div class="terminal-btn close"></div>
+            <div class="terminal-btn minimize"></div>
+            <div class="terminal-btn maximize"></div>
+        </div>
+        <div class="terminal-tabs">
+            <div class="terminal-tab active">
+                <span class="tab-full">ax@ax0x.ai: ~</span>
+                <span class="tab-short">~</span>
+            </div>
+            <div class="terminal-tab">
+                <span class="tab-full">claude-code</span>
+                <span class="tab-short">cc</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="terminal-body" id="terminal"></div>
+
+    <div class="terminal-statusbar">
+        <div class="status-left">
+            <div class="status-indicator"></div>
+            <span>zsh</span>
+        </div>
+        <div class="status-right">
+            <span id="line-count">0 lines</span>
+            <span>UTF-8</span>
+        </div>
+    </div>
+</div>
+
+<div class="click-hint" id="click-hint">click anywhere to skip animation</div>
+
+<div class="social-icons">
+    <a href="https://github.com/xingfanxia" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/xingfanxia/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:xingfanxia@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+</div>
+
+<!--
+  SECURITY NOTE: All innerHTML usage in the script below uses only hardcoded
+  static strings defined in the sequence array. No user input or external data
+  is ever rendered. This is a static personal site with no dynamic content.
+-->
+<script src="terminal.js"></script>
+
+</body>
 </html>
