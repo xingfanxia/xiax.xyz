@@ -135,7 +135,7 @@
             cmd: 'cat token-burn.log',
             output: [
                 '',
-                '  <span class="output-dim">Token Burn Trajectory</span>  <span class="output-bold">Total: 3B+</span>',
+                '  <span class="output-dim">Cumulative Token Burn</span>  <span class="output-bold">Total: 3B+</span>',
                 '',
                 '  <span class="output-dim">Q3\'24</span>  <span class="output-dim">\u2588</span> <span class="output-dim">20M</span>',
                 '  <span class="output-dim">Q4\'24</span>  <span class="output-dim">\u2588\u2588</span> <span class="output-dim">50M</span>',
