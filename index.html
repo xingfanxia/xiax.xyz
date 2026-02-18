@@ -136,8 +136,14 @@ body::before {
     background: transparent;
     border-radius: 6px 6px 0 0;
     border: none;
-    cursor: default;
+    cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.terminal-tab:not(.active):hover {
+    color: #8b949e;
+    background: rgba(13, 17, 23, 0.5);
 }
 
 .terminal-tab.active {
@@ -359,13 +365,21 @@ body::before {
             <div class="terminal-btn maximize"></div>
         </div>
         <div class="terminal-tabs">
-            <div class="terminal-tab active">
+            <div class="terminal-tab active" data-tab="home">
                 <span class="tab-full">ax@ax0x.ai: ~</span>
                 <span class="tab-short">~</span>
             </div>
-            <div class="terminal-tab">
-                <span class="tab-full">claude-code</span>
-                <span class="tab-short">cc</span>
+            <div class="terminal-tab" data-tab="projects">
+                <span class="tab-full">projects</span>
+                <span class="tab-short">proj</span>
+            </div>
+            <div class="terminal-tab" data-tab="claude-code">
+                <span class="tab-full">code</span>
+                <span class="tab-short">code</span>
+            </div>
+            <div class="terminal-tab" data-tab="thoughts">
+                <span class="tab-full">thoughts</span>
+                <span class="tab-short">📝</span>
             </div>
         </div>
     </div>
