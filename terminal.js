@@ -787,13 +787,16 @@
         {
             cmd: 'ls -la posts/',
             output: [
-                '<span class="output-dim">total 4 posts</span>',
+                '<span class="output-dim">total 6 posts</span>',
                 '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-en">the-companion-vision.md</a>  <span class="output-dim">\u2014 Building AI That Truly Understands You</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-zh">the-companion-vision-zh.md</a>  <span class="output-dim">\u2014 \u6784\u5EFA\u771F\u6B63\u7406\u89E3\u4F60\u7684AI</span>',
                 '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-en">the-agent-economy.md</a>  <span class="output-dim">\u2014 Agent Marketplaces and Proxy Social Networks</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-zh">the-agent-economy-zh.md</a>  <span class="output-dim">\u2014 Agent\u7ECF\u6D4E\u4E0E\u4EE3\u7406\u793E\u4EA4\u7F51\u7EDC</span>',
+                '',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-en">wearables-and-companions.md</a>  <span class="output-dim">\u2014 Wearables as the Nervous System of AI Companions</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-zh">wearables-and-companions-zh.md</a>  <span class="output-dim">\u2014 \u53EF\u7A7F\u6234\u8BBE\u5907\uFF1AAI\u4F34\u4FA3\u7684\u795E\u7ECF\u7CFB\u7EDF</span>',
                 '',
                 '<span class="output-dim">// click a post to read</span>'
             ]
@@ -805,7 +808,9 @@
         'companion-en': {file: 'blog/the-companion-vision.md', title: 'the-companion-vision.md', alt: 'companion-zh', altLabel: '[\u4E2D\u6587]'},
         'companion-zh': {file: 'blog/the-companion-vision-zh.md', title: 'the-companion-vision-zh.md', alt: 'companion-en', altLabel: '[EN]'},
         'agents-en': {file: 'blog/the-agent-economy.md', title: 'the-agent-economy.md', alt: 'agents-zh', altLabel: '[\u4E2D\u6587]'},
-        'agents-zh': {file: 'blog/the-agent-economy-zh.md', title: 'the-agent-economy-zh.md', alt: 'agents-en', altLabel: '[EN]'}
+        'agents-zh': {file: 'blog/the-agent-economy-zh.md', title: 'the-agent-economy-zh.md', alt: 'agents-en', altLabel: '[EN]'},
+        'wearables-en': {file: 'blog/wearables-and-companions.md', title: 'wearables-and-companions.md', alt: 'wearables-zh', altLabel: '[\u4E2D\u6587]'},
+        'wearables-zh': {file: 'blog/wearables-and-companions-zh.md', title: 'wearables-and-companions-zh.md', alt: 'wearables-en', altLabel: '[EN]'}
     };
 
     // Map tab names to their sequences
