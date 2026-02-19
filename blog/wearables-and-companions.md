@@ -152,10 +152,3 @@ Wearables are that layer. Not smartwatches with screens. Not fitness trackers wi
 
 Build the jewelry. Build the companion. Connect them. That's the full stack of human emotional infrastructure.
 
----
-
-*Build for China first. Adapt globally. All humans are the same.*
-
----
-
-*Follow the journey: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*

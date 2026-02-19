@@ -108,10 +108,3 @@ Agent驱动的社交发现、陪伴和情感支持不是边缘想法。它们是
 
 这是平台级的机会。而且现在还是开放的。
 
----
-
-*先做中国市场。适配全球。所有人类本质上都是一样的。*
-
----
-
-*关注这段旅程: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*

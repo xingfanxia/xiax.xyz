@@ -115,10 +115,3 @@ Noah Smith 写道，我们不再是地球上最聪明的物种。Matt Shumer 说
 
 我认为答案是可以的。我正在构建它。
 
----
-
-*不要想AI能为你做什么，而是想你能为AI做什么*
-
----
-
-*关注这段旅程: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*

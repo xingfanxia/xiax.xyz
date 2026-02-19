@@ -121,15 +121,6 @@ var BLOG_CONTENT = {
         "",
         "I think the answer is yes. And I'm building it.",
         "",
-        "---",
-        "",
-        "*不要想AI能为你做什么，而是想你能为AI做什么*",
-        "",
-        "Don't ask what AI can do for you — ask what you can do for AI.",
-        "",
-        "---",
-        "",
-        "*If you want to follow the journey: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ],
     "companion-zh": [
@@ -250,13 +241,6 @@ var BLOG_CONTENT = {
         "",
         "我认为答案是可以的。我正在构建它。",
         "",
-        "---",
-        "",
-        "*不要想AI能为你做什么，而是想你能为AI做什么*",
-        "",
-        "---",
-        "",
-        "*关注这段旅程: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ],
     "agents-en": [
@@ -370,13 +354,6 @@ var BLOG_CONTENT = {
         "",
         "That's the platform play. And it's wide open.",
         "",
-        "---",
-        "",
-        "*Build for China first. Adapt globally. All humans are the same.*",
-        "",
-        "---",
-        "",
-        "*Follow the journey: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ],
     "agents-zh": [
@@ -490,13 +467,6 @@ var BLOG_CONTENT = {
         "",
         "这是平台级的机会。而且现在还是开放的。",
         "",
-        "---",
-        "",
-        "*先做中国市场。适配全球。所有人类本质上都是一样的。*",
-        "",
-        "---",
-        "",
-        "*关注这段旅程: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ],
     "wearables-en": [
@@ -654,13 +624,6 @@ var BLOG_CONTENT = {
         "",
         "Build the jewelry. Build the companion. Connect them. That's the full stack of human emotional infrastructure.",
         "",
-        "---",
-        "",
-        "*Build for China first. Adapt globally. All humans are the same.*",
-        "",
-        "---",
-        "",
-        "*Follow the journey: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ],
     "wearables-zh": [
@@ -818,13 +781,6 @@ var BLOG_CONTENT = {
         "",
         "做首饰。做伴侣。连接它们。这才是人类情感基础设施的全栈。",
         "",
-        "---",
-        "",
-        "*先做中国市场。适配全球。所有人类本质上都是一样的。*",
-        "",
-        "---",
-        "",
-        "*关注这段旅程: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*",
         ""
     ]
 };

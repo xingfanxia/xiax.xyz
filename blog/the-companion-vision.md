@@ -115,12 +115,3 @@ The question isn't "can AI feel." It's "can AI make you feel understood."
 
 I think the answer is yes. And I'm building it.
 
----
-
-*不要想AI能为你做什么，而是想你能为AI做什么*
-
-Don't ask what AI can do for you — ask what you can do for AI.
-
----
-
-*If you want to follow the journey: [GitHub](https://github.com/xingfanxia) | [LinkedIn](https://www.linkedin.com/in/xingfanxia/) | [xingfanxia@gmail.com](mailto:xingfanxia@gmail.com)*
