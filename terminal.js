@@ -17,6 +17,7 @@
     var speed = 1;
     var skipped = false;
     var activeTab = 'home';
+    var inReaderMode = false;
     var runningTimers = [];
 
     document.addEventListener('click', function(e) {
@@ -26,6 +27,15 @@
             skipped = true;
             speed = 100;
             if (clickHint) clickHint.style.opacity = '0';
+        }
+    });
+
+    // Keyboard shortcut: press 'q' to exit reader mode
+    document.addEventListener('keydown', function(e) {
+        if (inReaderMode && e.key === 'q') {
+            e.preventDefault();
+            inReaderMode = false;
+            switchTab('blog');
         }
     });
 
@@ -838,6 +848,7 @@
 
         // Reset terminal
         activeTab = tabName;
+        inReaderMode = false;
         terminal.innerHTML = '';
         lineCount = 0;
         if (lineCountEl) lineCountEl.textContent = '0 lines';
@@ -897,11 +908,22 @@
         backBtn.href = '#';
         backBtn.className = 'reader-back';
         backBtn.textContent = '[q] back';
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            inReaderMode = false;
+            switchTab('blog');
+        });
         var langBtn = document.createElement('a');
         langBtn.href = '#';
         langBtn.className = 'reader-lang-toggle';
         langBtn.setAttribute('data-post', post.alt);
         langBtn.textContent = ' ' + post.altLabel;
+        langBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openBlogPost(post.alt);
+        });
         barRight.appendChild(backBtn);
         barRight.appendChild(langBtn);
         bar.appendChild(barLeft);
@@ -946,10 +968,17 @@
         footerBack.href = '#';
         footerBack.className = 'reader-back';
         footerBack.textContent = ' [q] back to posts';
+        footerBack.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            inReaderMode = false;
+            switchTab('blog');
+        });
         footer.appendChild(footerLeft);
         footer.appendChild(footerBack);
         terminal.appendChild(footer);
 
+        inReaderMode = true;
         if (lineCountEl) lineCountEl.textContent = lineCount + ' lines';
         if (clickHint) clickHint.style.opacity = '0';
         terminal.scrollTop = 0;
