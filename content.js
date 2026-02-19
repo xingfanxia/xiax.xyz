@@ -14,6 +14,7 @@ var SITE_CONTENT = (function() {
             output: [
                 '<span class="output-bold">Xingfan Xia</span> <span class="output-dim">(ax)</span>',
                 '<span class="output-dim">CTO &amp; Co-Founder @</span> <a href="https://computelabs.ai" target="_blank" class="output-link">Compute Labs</a>',
+                '<span class="output-dim">Ex-Airbnb, Apple, AWS \u2014 AI/ML veteran</span>',
                 '<span class="output-dim">Redmond, WA</span>'
             ]
         },
