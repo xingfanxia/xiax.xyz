@@ -958,64 +958,10 @@
     function openBlogPost(postId) {
         var post = blogPosts[postId];
         if (!post) return;
-        fetch(post.file)
-            .then(function(res) {
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                return res.text();
-            })
-            .then(function(md) {
-                renderReader(md.split('\n'), postId);
-            })
-            .catch(function() {
-                // file:// protocol fallback
-                clearTimers();
-                terminal.textContent = '';
-                lineCount = 0;
-                var lines = [
-                    {text: '', cls: ''},
-                    {text: '  Cannot load posts via file:// protocol.', cls: 'output-dim'},
-                    {text: '', cls: ''},
-                    {text: '  To read locally, start a server:', cls: 'output-dim'},
-                    {text: '  $ python3 -m http.server', cls: 'output-bold'},
-                    {text: '  then open http://localhost:8000', cls: 'output-dim'},
-                    {text: '', cls: ''},
-                    {text: '  Or visit the live site:', cls: 'output-dim'}
-                ];
-                for (var i = 0; i < lines.length; i++) {
-                    var div = document.createElement('div');
-                    div.className = 'reader-line';
-                    if (lines[i].cls) {
-                        var span = document.createElement('span');
-                        span.className = lines[i].cls;
-                        span.textContent = lines[i].text;
-                        div.appendChild(span);
-                    } else {
-                        div.textContent = '\u00A0';
-                    }
-                    terminal.appendChild(div);
-                }
-                var linkDiv = document.createElement('div');
-                linkDiv.className = 'reader-line';
-                var link = document.createElement('a');
-                link.href = 'https://ax0x.ai';
-                link.target = '_blank';
-                link.className = 'output-link';
-                link.textContent = '  ax0x.ai';
-                linkDiv.appendChild(link);
-                terminal.appendChild(linkDiv);
-
-                var footer = document.createElement('div');
-                footer.className = 'reader-bar';
-                footer.style.marginTop = '12px';
-                var backBtn = document.createElement('a');
-                backBtn.href = '#';
-                backBtn.className = 'reader-back';
-                backBtn.textContent = '[q] back to posts';
-                footer.appendChild(backBtn);
-                terminal.appendChild(footer);
-
-                if (clickHint) clickHint.style.opacity = '0';
-            });
+        var content = typeof BLOG_CONTENT !== 'undefined' && BLOG_CONTENT[postId];
+        if (content) {
+            renderReader(content, postId);
+        }
     }
 
     // Handle clickable links: tab links, blog posts, reader controls
