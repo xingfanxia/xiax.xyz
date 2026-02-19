@@ -773,6 +773,31 @@
         }
     ];
 
+    var blogSequence = [
+        {
+            cmd: 'ls -la posts/',
+            output: [
+                '<span class="output-dim">total 4 posts</span>',
+                '',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-en">the-companion-vision.md</a>  <span class="output-dim">\u2014 Building AI That Truly Understands You</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-zh">the-companion-vision-zh.md</a>  <span class="output-dim">\u2014 \u6784\u5EFA\u771F\u6B63\u7406\u89E3\u4F60\u7684AI</span>',
+                '',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-en">the-agent-economy.md</a>  <span class="output-dim">\u2014 Agent Marketplaces and Proxy Social Networks</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-zh">the-agent-economy-zh.md</a>  <span class="output-dim">\u2014 Agent\u7ECF\u6D4E\u4E0E\u4EE3\u7406\u793E\u4EA4\u7F51\u7EDC</span>',
+                '',
+                '<span class="output-dim">// click a post to read</span>'
+            ]
+        }
+    ];
+
+    // Blog post registry — fetched from markdown files
+    var blogPosts = {
+        'companion-en': {file: 'blog/the-companion-vision.md', title: 'the-companion-vision.md', alt: 'companion-zh', altLabel: '[\u4E2D\u6587]'},
+        'companion-zh': {file: 'blog/the-companion-vision-zh.md', title: 'the-companion-vision-zh.md', alt: 'companion-en', altLabel: '[EN]'},
+        'agents-en': {file: 'blog/the-agent-economy.md', title: 'the-agent-economy.md', alt: 'agents-zh', altLabel: '[\u4E2D\u6587]'},
+        'agents-zh': {file: 'blog/the-agent-economy-zh.md', title: 'the-agent-economy-zh.md', alt: 'agents-en', altLabel: '[EN]'}
+    };
+
     // Map tab names to their sequences
     var tabSequences = {
         'home': homeSequence,
@@ -780,6 +805,7 @@
         'panpanmao': panpanmaoSequence,
         'openclaw': openclawSequence,
         'claude-code': claudeCodeSequence,
+        'blog': blogSequence,
         'thoughts': thoughtsSequence,
         'future': futureSequence
     };
@@ -788,7 +814,8 @@
     var tabPaths = {
         'projects': '~/projects',
         'panpanmao': '~/projects/panpanmao',
-        'openclaw': '~/projects/openclaw'
+        'openclaw': '~/projects/openclaw',
+        'blog': '~/blog'
     };
 
     // ---- Tab switching ----
@@ -839,8 +866,135 @@
         })(tabs[t]);
     }
 
-    // Handle clickable project links that switch tabs
+    // ---- Blog reader mode ----
+
+    // Lightweight markdown to terminal HTML
+    // SAFE: only processes static author-written .md files from same origin
+    function mdToHtml(text) {
+        return text
+            .replace(/\*\*(.+?)\*\*/g, '<span class="output-bold">$1</span>')
+            .replace(/\*(.+?)\*/g, '<span class="output-dim">$1</span>')
+            .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" class="output-link">$1</a>');
+    }
+
+    // Renders a markdown file in less(1)-style reader mode
+    // SAFE: content is only fetched from same-origin static .md files
+    function renderReader(mdLines, postId) {
+        clearTimers();
+        terminal.textContent = '';
+        lineCount = 0;
+
+        var post = blogPosts[postId];
+
+        // Top bar
+        var bar = document.createElement('div');
+        bar.className = 'reader-bar';
+        var barLeft = document.createElement('span');
+        barLeft.className = 'output-dim';
+        barLeft.textContent = 'less ' + post.title;
+        var barRight = document.createElement('span');
+        var backBtn = document.createElement('a');
+        backBtn.href = '#';
+        backBtn.className = 'reader-back';
+        backBtn.textContent = '[q] back';
+        var langBtn = document.createElement('a');
+        langBtn.href = '#';
+        langBtn.className = 'reader-lang-toggle';
+        langBtn.setAttribute('data-post', post.alt);
+        langBtn.textContent = ' ' + post.altLabel;
+        barRight.appendChild(backBtn);
+        barRight.appendChild(langBtn);
+        bar.appendChild(barLeft);
+        bar.appendChild(barRight);
+        terminal.appendChild(bar);
+
+        // Render each markdown line
+        for (var i = 0; i < mdLines.length; i++) {
+            var line = mdLines[i];
+            var div = document.createElement('div');
+            div.className = 'reader-line';
+
+            if (line === '---') {
+                div.className = 'reader-line reader-sep';
+            } else if (line.indexOf('## ') === 0) {
+                div.className = 'reader-line reader-h2';
+                // SAFE: static author-written markdown only
+                div.innerHTML = mdToHtml(line.substring(3));
+            } else if (line.indexOf('# ') === 0) {
+                div.className = 'reader-line reader-h1';
+                div.innerHTML = mdToHtml(line.substring(2));
+            } else if (line.indexOf('- ') === 0) {
+                div.innerHTML = '<span class="output-green">\u25A0</span> ' + mdToHtml(line.substring(2));
+            } else if (line === '') {
+                div.textContent = '\u00A0';
+            } else {
+                div.innerHTML = mdToHtml(line);
+            }
+
+            terminal.appendChild(div);
+            lineCount++;
+        }
+
+        // Footer
+        var footer = document.createElement('div');
+        footer.className = 'reader-bar';
+        footer.style.marginTop = '12px';
+        var footerLeft = document.createElement('span');
+        footerLeft.className = 'output-dim';
+        footerLeft.textContent = '(END)';
+        var footerBack = document.createElement('a');
+        footerBack.href = '#';
+        footerBack.className = 'reader-back';
+        footerBack.textContent = ' [q] back to posts';
+        footer.appendChild(footerLeft);
+        footer.appendChild(footerBack);
+        terminal.appendChild(footer);
+
+        if (lineCountEl) lineCountEl.textContent = lineCount + ' lines';
+        if (clickHint) clickHint.style.opacity = '0';
+        terminal.scrollTop = 0;
+    }
+
+    function openBlogPost(postId) {
+        var post = blogPosts[postId];
+        if (!post) return;
+        fetch(post.file)
+            .then(function(res) { return res.text(); })
+            .then(function(md) {
+                renderReader(md.split('\n'), postId);
+            });
+    }
+
+    // Handle clickable links: tab links, blog posts, reader controls
     terminal.addEventListener('click', function(e) {
+        // Blog post links
+        var postLink = e.target.closest('.blog-post-link');
+        if (postLink) {
+            e.preventDefault();
+            e.stopPropagation();
+            openBlogPost(postLink.getAttribute('data-post'));
+            return;
+        }
+
+        // Reader back button
+        var backLink = e.target.closest('.reader-back');
+        if (backLink) {
+            e.preventDefault();
+            e.stopPropagation();
+            switchTab('blog');
+            return;
+        }
+
+        // Reader language toggle
+        var langToggle = e.target.closest('.reader-lang-toggle');
+        if (langToggle) {
+            e.preventDefault();
+            e.stopPropagation();
+            openBlogPost(langToggle.getAttribute('data-post'));
+            return;
+        }
+
+        // Tab navigation links (projects sub-tabs)
         var link = e.target.closest('.tab-link');
         if (link) {
             e.preventDefault();

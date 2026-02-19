@@ -331,6 +331,88 @@ body::before {
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* Reader mode (blog articles) */
+.reader-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+    font-size: 11px;
+    color: #484f58;
+}
+
+.reader-back {
+    color: #58a6ff;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    background: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.reader-back:hover {
+    background: rgba(88, 166, 255, 0.1);
+    color: #79c0ff;
+}
+
+.reader-line {
+    line-height: 1.8;
+    margin-bottom: 2px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.reader-line.reader-h1 {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.reader-line.reader-h2 {
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #58a6ff;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #21262d;
+}
+
+.reader-line.reader-sep {
+    border-top: 1px solid #21262d;
+    margin: 16px 0;
+    height: 0;
+}
+
+.reader-line.reader-meta {
+    color: #484f58;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.reader-lang-toggle {
+    display: inline-block;
+    margin-left: 12px;
+    color: #ffa657;
+    cursor: pointer;
+    font-size: 11px;
+    border-bottom: 1px dotted rgba(255, 166, 87, 0.4);
+    transition: all 0.15s ease;
+}
+
+.reader-lang-toggle:hover {
+    color: #ffb86c;
+    border-bottom-color: #ffb86c;
+}
+
 /* Responsive */
 @media (max-width: 860px) {
     body { padding: 12px; align-items: flex-start; padding-top: 20px; }
@@ -384,6 +466,10 @@ body::before {
             <div class="terminal-tab" data-tab="claude-code">
                 <span class="tab-full">code</span>
                 <span class="tab-short">code</span>
+            </div>
+            <div class="terminal-tab" data-tab="blog">
+                <span class="tab-full">blog</span>
+                <span class="tab-short">blog</span>
             </div>
             <div class="terminal-tab" data-tab="thoughts">
                 <span class="tab-full">thoughts</span>
