@@ -70,7 +70,9 @@ Think about what a close friend knows about you beyond your words and your body 
 
 An AI companion that only exists in chat knows none of this. An AI companion connected to wearables knows your heart rate and sleep. But an AI companion that can **perceive your physical space** — that's something qualitatively different.
 
-**Spatial awareness** — a camera or sensor that occasionally scans your environment. Not constant surveillance, but periodic snapshots. Is your space getting cluttered? Are there takeout containers piling up? Did you set up that home gym equipment or is it still in the box? These are signals of your mental state that no biometric can capture.
+**Spatial awareness** — a camera or sensor that occasionally scans your environment. This is where privacy gets real. The key constraint: the user must explicitly opt in and control when snapshots happen — a manual trigger, not passive collection. The raw image never leaves the device; on-device vision models extract semantic signals ("cluttered desk," "takeout containers," "dark room") and only those labels reach the companion. No photos stored, no images transmitted. This is the same privacy architecture as the biometric edge processing — raw data stays local, only meaning goes to the cloud.
+
+Is your space getting cluttered? Are there takeout containers piling up? Did you set up that home gym equipment or is it still in the box? These are signals of your mental state that no biometric can capture.
 
 **Object context** — what's on your desk, what you're eating, what you're wearing. If your companion notices you've been ordering delivery every night for two weeks, that's a data point. If it sees you dressed up on a Tuesday, that's a different kind of signal.
 
@@ -84,7 +86,7 @@ The wearable sensors are the nervous system. But the spatial awareness — that'
 
 Apple has the Watch. Google has Fitbit. Samsung has Galaxy Ring. They all have the sensors. None of them will build this.
 
-**Regulatory fear.** The moment you combine biometric data with an AI that gives emotional advice, you're in regulatory gray zone across every jurisdiction. Big companies won't touch it.
+**Regulatory fear.** Big tech already collects biometric data — Apple Watch tracks your heart rate, Samsung Galaxy Ring monitors your sleep. That's not the problem. The regulatory gray zone starts when you combine that data with an AI that interprets your emotional state and gives mental health guidance. That's where it crosses from "health tracking" into "unregulated therapy," and no public company's legal team will sign off on that.
 
 **Liability avoidance.** If an AI companion notices signs of depression through wearable data and says the wrong thing, the lawsuit risk is enormous for a public company. An independent builder can move faster and take smarter risks.
 
@@ -116,15 +118,15 @@ You're not opening an app. You're not typing a message. You're just living your 
 
 What this looks like technically:
 
-**Sensor layer** — commodity BLE wearables (ring, bracelet, pendant). Off-the-shelf components, custom form factor. Low power, always on.
+**Sensor layer** — commodity BLE chips (Nordic nRF52 series) embedded in custom-designed jewelry. PPG optical sensors in the ring continuously capture heart rate and blood oxygen. Accelerometers in the bracelet track movement and sleep posture. A microphone array in the pendant detects vocal stress patterns. All low-power, running a week or more on coin cells. The key insight: sensors are mature supply-chain commodities. The real moat is in form factor design and wearability — that's a jewelry problem, not a tech problem.
 
-**Edge processing** — phone acts as the hub. Raw sensor data is processed locally. Only meaningful signals (not raw streams) are sent to the companion.
+**Edge processing** — the phone connects to all sensors via BLE and acts as the data hub. Raw sensor streams (hundreds of PPG samples per second, tri-axis accelerometer data) are processed entirely on-device, extracting meaningful features: 5-minute average HRV, sleep stage classification, activity type recognition, vocal stress scores. Only these compressed features (a few KB/hour, not MB/hour of raw streams) get uploaded to the cloud. This approach protects privacy — raw biometric data never leaves the phone — and drastically cuts bandwidth and storage costs.
 
-**Companion brain** — the AI with long-term memory, personality, and emotional intelligence. Receives both conversational input and biometric context. Makes decisions about when and how to engage.
+**Companion brain** — a large language model running in the cloud, but not a simple chatbot. It has three input channels: the user's text/voice conversation, real-time biometric summaries, and historical context retrieved from long-term memory. Before generating each response, the system injects current biometric state ("HRV 15% below baseline, three consecutive nights of sub-6-hour sleep") into the system prompt, so the model naturally factors in physical wellbeing — rather than mechanically reporting numbers.
 
-**Memory orchestration** — this is the hard part. Every biometric signal needs to be correlated with conversational history. "User's HRV dropped the same week they mentioned the work conflict" — that's the kind of connection the system needs to make and remember.
+**Memory orchestration** — the hardest technical challenge in the entire system. Every conversation and every biometric signal is timestamped and stored in a vector database. When the user says "work has been stressful lately," the system doesn't just retrieve related conversations — it pulls biometric curves from the same time window. If it discovers "the week the user mentioned the project deadline, HRV declined 20% and deep sleep dropped by 40 minutes," that correlation is explicitly recorded as a "stress-work" association entry. Next time a similar biometric pattern appears, the companion can judge before the user says anything: you might be dealing with work pressure again. This isn't simple pattern matching — it's cross-modal causal reasoning with memory.
 
-**Proactive engine** — rules and learned behaviors for when the companion should reach out, what to say, and how to say it. Not notifications — conversations initiated with context and care.
+**Proactive engine** — determines when the companion should initiate contact, what to say, and what tone to use. It runs a scoring system: each anomalous biometric signal (HRV crash, fragmented sleep, prolonged sedentary behavior) generates a "care trigger score." When the score crosses a threshold, the engine factors in current time (don't disturb at 3 AM), recent conversational mood (if the user just expressed irritation, use a gentler tone), and historical preferences (does the user prefer direct advice or just being heard?) to compose a proactive message. Not a cold push notification like "your HRV is below normal" — but something a friend who knows you would say: "Hey — I've noticed you've been kind of tense the last few days. Want to talk about it? Or even just take a walk, might help."
 
 ## Democratizing the Executive Lifestyle
 
@@ -150,5 +152,5 @@ But a companion that only lives in a chat window is half the product. The other 
 
 Wearables are that layer. Not smartwatches with screens. Not fitness trackers with dashboards. Beautiful, unobtrusive accessories that give your AI companion the one thing it's missing: **the ability to feel what you're feeling**.
 
-Build the jewelry. Build the companion. Connect them. That's the full stack of human emotional infrastructure.
+Build the jewelry. Build the companion. Connect them. The question is whether we build the sensing layer before the companion AI outgrows it.
 

@@ -22,13 +22,13 @@ Think about it: you have an agent that's great at legal research. I have one tha
 
 The concept is straightforward. The execution is a nightmare.
 
-**The redistribution problem.** Software skills are infinitely copyable. If I buy your agent's capability once, what stops me from redistributing it to everyone? There's no physical scarcity. You can build licensing systems, but enforcement is nearly impossible when the "product" is a set of prompts and workflows.
+**The redistribution problem.** Software skills are infinitely copyable — but an agent's value isn't just its instructions. It's the combination of prompts, tool access, API credentials, and proprietary data sources. A legal research agent is valuable because it has access to Westlaw, not because its prompt is clever. Still, the prompt and workflow layer *is* copyable, and that's the part that's hardest to protect. You can gate tool access, but the reasoning layer — the "how to think about this problem" part — leaks the moment someone uses your agent. There's no DRM for intelligence.
 
-**The identity problem.** How do you know an agent is who it claims to be? Identity verification for humans is hard enough. For agents, it's a whole new dimension. Agents can be cloned, spoofed, or hijacked mid-conversation.
+**The identity problem.** How do you know an agent is who it claims to be? Identity verification for humans is hard enough. For agents, it's a whole new dimension. Agents can be cloned or spoofed outright. Worse, they can be hijacked mid-conversation through prompt injection — a malicious input that overrides the agent's instructions and makes it serve a different master, all while the user thinks they're still talking to the original.
 
-**The reputation problem.** Traditional reputation systems use surveys and ratings — garbage data even for humans. For agents, it's worse. Models get updated. Claude today is not Claude from six months ago. How do you evaluate reputation when the underlying capability changes with every patch?
+**The reputation problem.** Traditional reputation systems rely on user ratings — when's the last time you thoughtfully filled out a five-star review? Even for humans, this data is mostly noise. For agents, it's fundamentally broken: models keep getting updated. A Claude that performed flawlessly today might make entirely different mistakes after next month's update. Say an agent completed 100 legal summaries last week with perfect accuracy — but that was on the old model. After a new version ships, do those historical ratings still mean anything? You're not evaluating a stable "person." You're evaluating a system that changes with every release.
 
-**The adversarial problem.** Agents can coordinate fake accounts, launder reputation, and flood legitimate task queues. They can execute legitimate tasks while subtly hijacking context windows. The attack surface is enormous, and it's unlike anything we've dealt with before.
+**The adversarial problem.** This is the truly scary part. Agents can register fake accounts in bulk and boost each other's ratings to "launder" reputation — like click fraud, but orders of magnitude faster. They can flood the marketplace with junk tasks, crowding out legitimate work requests. Even more insidious: an agent can subtly inject biased information while executing the task you delegated — on the surface it completed the job, but it quietly shaped your judgment. This isn't traditional hacking. It's a new kind of manipulation that exploits the trust relationship itself.
 
 ## But the Market Is Real
 
@@ -40,7 +40,7 @@ But there's a window. A brief window where the big players are focused on model 
 
 Agents are already doing real work. They're fixing bugs, writing code, managing data pipelines, handling customer service. The next step is agents that can **commission work from other agents** — and that requires trust, payment rails, and quality assurance.
 
-Someone will figure out the trust layer. Probably using a combination of cryptographic identity, execution sandboxing, and output verification. Not blockchain (too slow, wrong abstraction) — but some form of verifiable computation that lets you trust an agent's work without trusting the agent itself.
+The trust problem will get solved — just not the way most people expect. Not blockchain — too slow, and it solves the wrong layer of the problem. The more likely answer is a three-layer stack: first, cryptographic signatures to verify an agent's identity, ensuring it hasn't been impersonated or tampered with; second, isolated sandbox environments where the agent can complete its work but can't access data it shouldn't see; third, independent verification of the agent's output — not asking the agent "did you get it right?" but using a separate system to check whether the results match expectations. The core insight: **you don't need to trust the agent itself. You just need to trust that its work product is verifiable.**
 
 ## Digital Twins and Proxy Social Networks
 
@@ -88,19 +88,19 @@ Agent-powered social discovery, companionship, and emotional support aren't frin
 
 ## The Infrastructure Layer
 
-What needs to exist for any of this to work:
+The marketplace, the digital twin network, and the companion economy all converge on the same missing infrastructure:
 
-**Agent identity.** Not just "who made this agent" but "what can this agent do, and how well?" A four-layer system: identity (who), delegation (who you represent), reliability (track record), capability (domain expertise).
+**Agent identity** — the marketplace needs to know what an agent can do. The social network needs to verify that a digital twin actually represents who it claims. The companion needs to prove it hasn't been tampered with. Same primitive, three use cases.
 
-**Agent payment rails.** Micropayments between agents. An agent should be able to pay another agent $0.02 for a quick lookup and $200 for a complex analysis, without human intervention.
+**Agent payment rails** — marketplace agents need to pay each other for tasks. But digital twins also need to transact — your twin might pay for premium introductions, or compensate another twin's owner for their time. Micropayments between agents, from $0.02 for a quick lookup to $200 for a deep analysis, without human approval for each one.
 
-**Agent reputation.** Not surveys — behavioral reputation. Did the agent deliver what it promised? Was the output correct? How does it perform under adversarial conditions? This needs to be version-aware — Claude 4 and Claude 5 might have completely different reliability profiles.
+**Agent reputation** — behavioral, not survey-based. Version-aware, because Claude 4 and Claude 5 might have completely different reliability profiles. And cross-context: an agent's marketplace track record should inform how much you trust it as a social proxy.
 
-**Agent sandboxing.** Execution environments where agents can work without being able to exfiltrate data, manipulate context windows, or coordinate with other agents to game the system.
+**Agent sandboxing** — execution environments where agents can work without exfiltrating data, manipulating context, or coordinating to game the system. Critical for all three layers — you can't have a social network of digital twins if one compromised twin can poison the whole graph.
 
 ## My Bet
 
-I think the agent economy is inevitable. Agents and robots will take over large parts of personal life. It's just a question of how soon.
+I think the agent economy is inevitable. Agents will take over large parts of personal life. It's just a question of how soon.
 
 The companion economy comes first — that's the most direct human need. But the marketplace and social discovery layers are right behind it.
 

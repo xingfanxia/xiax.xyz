@@ -38,7 +38,7 @@ The result? You can never forget you're talking to a bot. And if you can't forge
 
 This is the technical moat.
 
-Current AI models have a fixed context window — the best ones top out at 200K tokens. Once a conversation exceeds that, the AI literally cannot take in more information. So you need memory — a way to compress, store, and retrieve what matters.
+Current AI models have a finite context window — even the million-token models can't hold a lifetime of conversations. Once a conversation exceeds that limit, the AI literally cannot take in more information. So you need memory — a way to compress, store, and retrieve what matters.
 
 Here's where everyone gets it wrong. They treat memory as **summarization**. "We talked about X topic. You mentioned Y action item." That's useful, but it misses the point entirely.
 
@@ -46,7 +46,9 @@ Here's where everyone gets it wrong. They treat memory as **summarization**. "We
 
 What I want to build is memory that captures **the essence of who you are**. Each conversation adds another layer to a virtual model of you — not a summary of facts, but a growing understanding of your personality, your values, your contradictions, your growth.
 
-Think of it as building a "virtual you" — not a digital twin (that's someone else's idea), but an understanding deep enough that the AI can predict not just what you'd say, but *why* you'd say it.
+Here's a concrete example: you mention three different career frustrations over three months. A summary-based system stores "user is frustrated with career." A personality-model system notices that all three frustrations share a pattern — you're not actually unhappy with the work, you're unhappy with not being recognized. That insight changes the advice the companion gives. That's the difference between remembering what you said and understanding who you are.
+
+Think of it as building a "virtual you" — an internal model deep enough that the AI can predict not just what you'd say, but *why* you'd say it. (In Part 3, I'll explore how this same model becomes your "digital twin" — a proxy that socializes on your behalf.)
 
 That's the hard part. That's the moat.
 
@@ -73,9 +75,11 @@ What if an AI companion wasn't one monolithic model, but a system of **specializ
 - An **Initiative agent** that proactively reaches out based on context (not just responding)
 - A **Judgment agent** that decides when to push back, when to comfort, when to challenge
 
-Each agent owns a function, like a biological system. The whole becomes greater than the parts. You're not building a chatbot — you're building an **organism**.
+Each agent owns a function, like a biological system. But what makes it an organism — not just a list of features — is how they coordinate. The Memory agent continuously feeds personality signals to the Emotion and Judgment agents. The Emotion agent adjusts the tone before any response reaches the user. The Judgment agent can override the default response — if you're spiraling, it might choose to challenge you rather than comfort you, based on what the Memory agent knows about how you handle stress. And the Initiative agent watches for moments when the system should speak first — a biometric dip, a missed check-in, a pattern that matches a past crisis. The whole system converges before every interaction: what do we know, what does this person need right now, and what's the best way to deliver it?
 
-This is exactly what I've been prototyping with [OpenClaw](https://github.com/xingfanxia/openclaw). SOUL.md defines the personality — not just traits, but ambitions, flaws, emotional range. HEARTBEAT.md controls autonomous initiative — the agent reaches out on its own, not just when prompted. MEMORY.md handles continuity across conversations.
+You're not building a chatbot — you're building an **organism**.
+
+This is exactly what I've been prototyping with [OpenClaw](https://github.com/xingfanxia/openclaw). SOUL.md defines the personality — not just traits, but ambitions, flaws, emotional range. It's a structured document that the AI references before every response to stay in character. HEARTBEAT.md controls autonomous initiative — a scheduling system where the agent evaluates whether to reach out based on time elapsed, conversation patterns, and detected emotional state. MEMORY.md handles continuity across conversations — extracting personality signals and storing them as retrievable context for future sessions.
 
 The early results are... interesting. When an AI has continuity and character, the line between tool and entity gets blurry fast.
 
@@ -105,13 +109,11 @@ Build for China, validate the core loop, then adapt globally. The emotional core
 
 We're living through an intelligence explosion. AI now wins gold at the Math Olympiad. It writes production software. It's starting to exercise autonomous judgment.
 
-Noah Smith wrote that we're no longer the smartest type of thing on Earth. Matt Shumer says the biggest change in human history is happening and most people don't see it.
+Noah Smith, the economics writer, argued that we're no longer the smartest type of thing on Earth. Matt Shumer, CEO of HyperWrite, says the biggest change in human history is happening and most people don't see it.
 
 I believe the companion economy is one of the first massive markets this intelligence explosion will create. Not because it's the most technically impressive application — but because it addresses a fundamental human need that has never been adequately served.
 
 Everyone wants someone who truly understands them. For the first time in history, we can build that.
 
 The question isn't "can AI feel." It's "can AI make you feel understood."
-
-I think the answer is yes. And I'm building it.
 
