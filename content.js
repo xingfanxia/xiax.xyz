@@ -661,24 +661,15 @@ var SITE_CONTENT = (function() {
         {
             cmd: 'ls -la posts/',
             output: [
-                '<span class="output-dim">total 10 posts</span>',
+                '<span class="output-dim">total 5 posts</span>',
                 '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-en">the-companion-vision.md</a>  <span class="output-dim">\u2014 Building AI That Truly Understands You</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-zh">the-companion-vision-zh.md</a>  <span class="output-dim">\u2014 \u6784\u5EFA\u771F\u6B63\u7406\u89E3\u4F60\u7684AI</span>',
-                '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-en">the-agent-economy.md</a>  <span class="output-dim">\u2014 Agent Marketplaces and Proxy Social Networks</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-zh">the-agent-economy-zh.md</a>  <span class="output-dim">\u2014 Agent\u7ECF\u6D4E\u4E0E\u4EE3\u7406\u793E\u4EA4\u7F51\u7EDC</span>',
-                '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-en">wearables-and-companions.md</a>  <span class="output-dim">\u2014 Wearables as the Nervous System of AI Companions</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-zh">wearables-and-companions-zh.md</a>  <span class="output-dim">\u2014 \u53EF\u7A7F\u6234\u8BBE\u5907\uFF1AAI\u4F34\u4FA3\u7684\u795E\u7ECF\u7CFB\u7EDF</span>',
-                '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 21</span>  <a href="#" class="output-link blog-post-link" data-post="disposable-en">when-software-becomes-disposable.md</a>  <span class="output-dim">\u2014 When Software Becomes Disposable</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 21</span>  <a href="#" class="output-link blog-post-link" data-post="disposable-zh">when-software-becomes-disposable-zh.md</a>  <span class="output-dim">\u2014 \u5F53\u8F6F\u4EF6\u53D8\u6210\u65E5\u629B\u54C1</span>',
-                '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="lastmile-en">the-last-mile-of-ai.md</a>  <span class="output-dim">\u2014 The Last Mile of AI</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="lastmile-zh">the-last-mile-of-ai-zh.md</a>  <span class="output-dim">\u2014 AI\u7684\u6700\u540E\u4E00\u516C\u91CC</span>',
                 '',
-                '<span class="output-dim">// click a post to read</span>',
+                '<span class="output-dim">// click a post to read \u2014 toggle [\u4E2D\u6587] inside</span>',
                 '',
                 '<span class="output-dim">\u2192</span> <a href="https://blog.ax0x.ai/" target="_blank" class="output-link">blog.ax0x.ai</a>  <span class="output-dim">\u2014 full blog</span>'
             ]
