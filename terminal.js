@@ -40,7 +40,6 @@
     document.addEventListener('keydown', function(e) {
         if (inReaderMode && e.key === 'q') {
             e.preventDefault();
-            inReaderMode = false;
             switchTab('blog');
         }
     });
@@ -144,7 +143,7 @@
     var tabs = document.querySelectorAll('.terminal-tab');
 
     function switchTab(tabName) {
-        if (tabName === activeTab) return;
+        if (tabName === activeTab && !inReaderMode) return;
 
         // Stop all running animations
         clearTimers();
@@ -222,7 +221,6 @@
         backBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            inReaderMode = false;
             switchTab('blog');
         });
         var langBtn = document.createElement('a');
@@ -282,7 +280,6 @@
         footerBack.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            inReaderMode = false;
             switchTab('blog');
         });
         footer.appendChild(footerLeft);
