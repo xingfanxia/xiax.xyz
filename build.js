@@ -25,7 +25,9 @@ var FILE_TO_ID = {
     'when-software-becomes-disposable.md': 'disposable-en',
     'when-software-becomes-disposable-zh.md': 'disposable-zh',
     'the-last-mile-of-ai.md': 'lastmile-en',
-    'the-last-mile-of-ai-zh.md': 'lastmile-zh'
+    'the-last-mile-of-ai-zh.md': 'lastmile-zh',
+    'why-claude-code.md': 'claudecode-en',
+    'why-claude-code-zh.md': 'claudecode-zh'
 };
 
 var entries = {};

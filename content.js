@@ -668,6 +668,7 @@ var SITE_CONTENT = (function() {
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-en">wearables-and-companions.md</a>  <span class="output-dim">\u2014 Wearables as the Nervous System of AI Companions</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 21</span>  <a href="#" class="output-link blog-post-link" data-post="disposable-en">when-software-becomes-disposable.md</a>  <span class="output-dim">\u2014 When Software Becomes Disposable</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="lastmile-en">the-last-mile-of-ai.md</a>  <span class="output-dim">\u2014 The Last Mile of AI</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="claudecode-en">why-claude-code.md</a>  <span class="output-dim">\u2014 Why Claude Code Changes Everything</span>',
                 '',
                 '<span class="output-dim">// click a post to read \u2014 toggle [\u4E2D\u6587] inside</span>',
                 '',
@@ -703,7 +704,9 @@ var SITE_CONTENT = (function() {
             'disposable-en': {file: 'blog/when-software-becomes-disposable.md', title: 'when-software-becomes-disposable.md', alt: 'disposable-zh', altLabel: '[\u4E2D\u6587]'},
             'disposable-zh': {file: 'blog/when-software-becomes-disposable-zh.md', title: 'when-software-becomes-disposable-zh.md', alt: 'disposable-en', altLabel: '[EN]'},
             'lastmile-en': {file: 'blog/the-last-mile-of-ai.md', title: 'the-last-mile-of-ai.md', alt: 'lastmile-zh', altLabel: '[\u4E2D\u6587]'},
-            'lastmile-zh': {file: 'blog/the-last-mile-of-ai-zh.md', title: 'the-last-mile-of-ai-zh.md', alt: 'lastmile-en', altLabel: '[EN]'}
+            'lastmile-zh': {file: 'blog/the-last-mile-of-ai-zh.md', title: 'the-last-mile-of-ai-zh.md', alt: 'lastmile-en', altLabel: '[EN]'},
+            'claudecode-en': {file: 'blog/why-claude-code.md', title: 'why-claude-code.md', alt: 'claudecode-zh', altLabel: '[\u4E2D\u6587]'},
+            'claudecode-zh': {file: 'blog/why-claude-code-zh.md', title: 'why-claude-code-zh.md', alt: 'claudecode-en', altLabel: '[EN]'}
         }
     };
 })();
