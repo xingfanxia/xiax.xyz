@@ -23,7 +23,7 @@ That weekend showed me three things, each more visceral than anything I'd theori
 
 ## The Last Mile
 
-In Part 4, I wrote about the agent marketplace's "conversational entry point" — users shouldn't browse a shelf of agents, they should just state their need and let the platform match. Sounds elegant.
+In [Part 4](/when-software-becomes-disposable), I wrote about the agent marketplace's "conversational entry point" — users shouldn't browse a shelf of agents, they should just state their need and let the platform match. Sounds elegant.
 
 But reality: before my friend could "converse," he had to cross a massive threshold.
 
@@ -47,6 +47,12 @@ But the person who built that experience was me — an engineer who works in Cla
 
 So the essence of the "last mile" isn't "agents aren't good enough" — it's "someone has to pave that road for you." Right now, that someone can only be a technical person. And the vast majority of people don't have a technical person in their life willing to spend the time paving it.
 
+Anthropic saw this problem too. Boris Cherny — Claude Code's creator — described in a recent interview how even inside Anthropic, non-engineers were "jumping over hoops" to install Claude Code in the terminal. Designers, data scientists, the finance team — they were all figuring out Node.js installation and terminal commands on their own, just to access agent-level capability. Outside Anthropic, people were using it to monitor tomato plants, recover wedding photos from corrupted hard drives, do financial analysis. The demand was unmistakable — but the barrier was absurd. A terminal CLI shouldn't be the entry point for someone who wants to pay a parking ticket with AI.
+
+So Anthropic built Cowork: Claude Code wrapped in an accessible desktop interface, running inside a virtual machine with deletion safeguards and permission guardrails. Four engineers built it in ten days — entirely written by Claude Code itself. Cowork is the first serious attempt to pave that last mile road at scale. It's Claude Code's full agent capability, minus the terminal barrier. Anthropic's sales team has already started migrating from Claude Code to Cowork — "because it's a little easier to use, and it has a VM so it's a little bit safer," Boris said.
+
+This doesn't solve the whole problem — users still need to learn how to give good instructions, how to think in goals rather than steps. But it removes the most brutal barrier: the one where you have to be an engineer just to get started.
+
 ## The Perception Gap
 
 The second discovery went deeper than the first.
@@ -65,13 +71,31 @@ But after the laughter subsided, he went quiet. Because he realized something: *
 
 Then when Claude Code built him a custom tool tailored entirely to his business scenario — not some generic software configuration, but an application that existed solely for his needs — he went quiet for a long time again.
 
-This validates the "disposable software" thesis from Part 4: building software for a single person is already technically feasible. **But 99.99% of people don't even know they can ask for it.**
+This validates the "disposable software" thesis from [Part 4](/when-software-becomes-disposable): building software for a single person is already technically feasible. **But 99.99% of people don't even know they can ask for it.**
 
 They've never seen agent-level capabilities. They've used free-tier, stripped-down, rate-limited models. Their entire impression of AI is a chat box that occasionally produces a useful answer.
 
 This isn't a technology problem. It's a **perception problem.**
 
 People don't know what's possible. And when you don't know what's possible, you don't even think to want it. You can't demand something you don't know exists.
+
+Boris Cherny has a product term for this: **latent demand**. He calls it the single biggest idea in product development. "People will only do a thing that they already do. You can't get people to do a new thing. If people are trying to do a thing and you make it easier, that's a good idea. But if people are doing a thing and you try to make them do a different thing, they're not going to do that."
+
+This reframes the perception gap as a product problem. My friend wasn't lacking demand — he was already doing financial analysis, already building reports, already making investment decisions. The demand was always there. What he lacked was the awareness that AI could make those things 10x easier. Once he saw it — once he experienced Claude Code working on his actual data — the latent demand exploded into active demand instantly. The gap wasn't motivation. It was exposure.
+
+Every feature of Claude Code was built this way. Plan Mode? Boris saw users already telling Claude "think about this, but don't code yet" — latent demand. Claude.md? Users were already writing markdown instructions for the model to read — latent demand. Cowork? Non-engineers were already jumping through terminal hoops to use Claude Code — latent demand. The pattern is always the same: observe what people are already trying to do, then remove the friction.
+
+The last mile problem, at its core, is a latent demand problem. The demand exists — billions of people do information work that agents could transform. But they don't know the supply exists. And you can't demand what you've never seen.
+
+So here's what latent demand looks like in practice. These are real use cases Boris mentioned in interviews — none of them are coding:
+
+**The repetitive work you already do every day.** Boris himself uses Cowork to pay parking tickets — the agent fills out forms, uploads evidence, submits appeals. Canceling unused subscriptions. Managing team weekly reports — automatically summarizing everyone's progress updates. These are things everyone has to do but nobody wants to.
+
+**Data analysis and research.** Anthropic's data scientists use Claude Code to write SQL, run analyses, and generate charts. Not "answer this data question for me" — but "here's my database, explore the data, find interesting patterns, and write it up as a report." The agent decides on its own what queries to run, what angles to analyze from, and how to present the results.
+
+**Custom tools for your specific situation.** [Part 4](/when-software-becomes-disposable)'s "disposable software" — you don't need to find a "close enough" generic product on the market. Just describe your need and let the agent build a tool that serves only you. My friend did exactly this over the weekend: in just over an hour, from zero to a fully customized application tailored to his specific business scenario.
+
+**Learn anything you want to learn.** Not a search-engine-style "what is X" — but "I want to understand X, my background is Y, explain it in a way I can understand, give me a practical example, and walk me through it step by step." The agent can adjust explanation depth to your knowledge level, use analogies you're familiar with, and act like a private tutor with infinite patience.
 
 ## You Are the Manager
 
@@ -91,11 +115,21 @@ I spent half a day teaching him not how to use Claude Code's features — but ho
 
 This is essentially **management training.**
 
+Here's a concrete example. Compare these two instructions:
+
+"Write me a Python script to parse this CSV" — you're prescribing steps. "I have sales data, I need to know which customers have decreased their order frequency in the past three months, and possible reasons why" — you're describing a goal. Let the agent decide how to get there. The result is almost always better than your predetermined path.
+
+Context matters just as much. Who you are, who will see this output, what decision you'll make with it. The same data analysis looks completely different presented for your boss versus for an investor. The agent isn't a mind reader — the more background you give it, the more accurate the result.
+
 We keep asking "what can AI do for you," but the real question is "what can you do for AI." Can you provide clear requirements? Sufficient context? If you don't know what you want yet, can you use the agent as a collaborator to figure it out together, instead of expecting it to read your mind?
 
 Flip the perspective: if you're a CEO and your direct report is extremely capable but has zero background information — how would you manage them? You wouldn't say "deal with that." You'd show them the data, explain the context, define the objectives, agree on delivery standards.
 
 **Same with AI. You are the manager.**
+
+Boris made an observation about this that surprised even him. At Anthropic, newer engineers — people with less experience and fewer strong opinions — often use Claude Code more effectively than veterans. The senior engineers' deeply ingrained habits and strong convictions about "the right way to do things" actually get in the way. "The biggest skill is people that can think scientifically and from first principles," Boris said. "A lot of these strong opinions just aren't relevant anymore."
+
+This applies directly to non-engineers learning to use agents. My friend's lack of engineering background wasn't just a barrier — in some ways, it was an advantage. He had no preconceptions about how software "should" work. Once he learned the management skill — how to frame clear goals and provide context — he had nothing to unlearn. The beginner's mind, it turns out, is better suited to the agent era than the expert's.
 
 ## The Cognitive Leap: From Tool to Partner
 
@@ -111,7 +145,7 @@ These three phase shifts — search engine, tool, collaborator — are the evolu
 
 The vast majority of people are still at step one. They treat AI as a smarter search engine: give it a question, expect an answer. A smaller group has reached step two, using AI as a tool — but still unidirectional, command-driven. Very few have reached step three, treating AI as a genuine collaborator.
 
-This connects directly to the companion vision I wrote about in Part 1. An AI companion that truly understands you requires more than memory orchestration and personality modeling on the technical side — **it requires a human willing to be understood.**
+This connects directly to the companion vision I wrote about in [Part 1](/the-companion-vision). An AI companion that truly understands you requires more than memory orchestration and personality modeling on the technical side — **it requires a human willing to be understood.**
 
 If you won't provide context, won't share what you really think, won't invest time building shared understanding with the agent — then no memory system, however sophisticated, can help you. The upper bound of an AI companion's effectiveness isn't determined by AI capability. It's determined by the depth of your engagement.
 
@@ -119,7 +153,7 @@ If you won't provide context, won't share what you really think, won't invest ti
 
 Back to the throughline of this series.
 
-In Part 2, I wrote about "democratizing the executive lifestyle" — everyone deserves their own personal coach and advisor. In Part 4, I wrote about "disposable software" and the "3D printing metaphor" — AI makes it economically viable to build software for a single person.
+In [Part 2](/wearables-and-companions), I wrote about "democratizing the executive lifestyle" — everyone deserves their own personal coach and advisor. In [Part 4](/when-software-becomes-disposable), I wrote about "disposable software" and the "3D printing metaphor" — AI makes it economically viable to build software for a single person.
 
 These theses all hold on a technical level.
 
@@ -168,6 +202,8 @@ In the AI Native era, these are a person's real competitive advantages. Knowing 
 Apart from a handful of cutting-edge institutions attempting to evolve, the vast majority of schools haven't even begun to think about this problem. They're still running assembly lines designed for the industrial age, producing a product the AI age no longer needs.
 
 This makes the last mile problem even thornier. It's not just that nobody has the incentive to teach ordinary people how to use AI — **the education system itself is cultivating a capability structure that runs counter to the AI era.** It trains people to be executors, not managers. To memorize answers, not to ask questions.
+
+Boris's approach to hiring confirms this inversion. He doesn't look for candidates with the strongest technical opinions or the most impressive resumes. He asks one question: "What's an example of when you were wrong?" He wants to see if people can recognize mistakes in hindsight, take ownership, and learn from them. "A lot of very senior people will never really take the blame for a mistake," he said. "But I'm wrong probably half the time. You just have to try stuff." The education system rewards being right. The agent era rewards knowing when you're wrong — and learning fast.
 
 So the last mile might persist indefinitely. Not because the technology isn't good enough. Not because the price isn't low enough. But because nobody has enough reason to pave that road — and the institution that should be paving it is walking in the opposite direction.
 
