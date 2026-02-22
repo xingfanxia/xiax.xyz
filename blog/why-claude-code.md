@@ -1,6 +1,6 @@
 ---
 title: "Why Claude Code"
-date: "2026-02-23"
+date: "2026-02-22"
 summary: "SemiAnalysis calls Claude Code the inflection point for AI agents. As someone who works inside Claude Code every day, I want to explain why Anthropic built it, and what it actually changed."
 tags: ["AI", "Agents"]
 series: "Agentic AI Thoughts"
@@ -153,13 +153,13 @@ But Microsoft's predicament isn't Microsoft's alone — it's the predicament of 
 
 Looking back at the writing process of this series, I'm a sample of one.
 
-In early 2025, I started using Claude Code to build PanPanMao's development environment. It still required a lot of manual guidance back then — but I could already feel that it was fundamentally different from Copilot's "autocomplete" paradigm.
+In 2023, I started using Cursor shortly after it launched. Back then it didn't have Agent Mode — just tab completion, helping you continue writing code. But even as just autocomplete, the productivity boost was already obvious. Cursor quickly became my core development tool.
 
-By mid-2025, it could handle complete feature development — from understanding requirements to writing code, writing tests, and deploying. My role shifted from "the person who writes code" to "the person who reviews code."
+Then I switched to Claude Code. The difference is fundamental — Cursor is still an IDE at its core. It puts you in front of code, lets you see it, edit it, with AI assisting alongside. Claude Code offers a completely different paradigm: you stop staring at code and **focus on describing intent**. You tell it what you want, and it plans, executes, and collaborates across files. Your role shifts from "the person who writes code" to "the person who manages the agent."
 
-Late 2025 to early 2026, the pace accelerated. I set up OpenClaw on GCP, connected the agent to Feishu, and non-technical team members started collaborating directly with the agent ([Part 5](/the-last-mile-of-ai) covered this). Anthropic launched Cowork. SemiAnalysis published their report. Top developers spoke up collectively.
+At the end of 2025, I built a liuren divination app first, then bazi, MBTI, dream interpretation — all toy-level experiments at first. Then I decided to get serious about building a real product. I bought the panpanmao domain, rewrote the underlying architecture, and unified everything into a single all-in-one app — that's how [PanPanMao](https://www.panpanmao.ai/) began. By early 2026, the pace accelerated. I set up OpenClaw on GCP, connected the agent to Feishu, and non-technical team members started collaborating directly with the agent ([Part 5](/the-last-mile-of-ai) covered this). Anthropic launched Cowork. SemiAnalysis published their report. Top developers spoke up collectively.
 
-This inflection point didn't happen on a single day. It was like water temperature rising — you're soaking in it every day, barely noticing the change. But if 2024-me saw 2026-me, he wouldn't recognize how I work.
+This inflection point didn't happen on a single day. It was like water temperature rising — you're soaking in it every day, barely noticing the change. But if 2023-me saw 2026-me, he wouldn't believe that my daily work is just thinking and talking to agents — not writing code.
 
 Even hiring is changing. YC is experimenting with having engineering candidates submit Claude Code session transcripts — recordings of themselves building a feature with an agent. "You can figure out how someone thinks," the YC partners explained. "Do they look at the logs? Can they correct the agent when it goes off track? Do they use plan mode? Do they think about systems?" Boris wants a spider chart — like in NBA 2K — rating engineers on dimensions like systems thinking, testing discipline, product sense, and automation instinct. The question is no longer "can you write code?" It's "can you steer an agent to build what's needed?"
 
