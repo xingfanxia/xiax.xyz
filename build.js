@@ -21,7 +21,11 @@ var FILE_TO_ID = {
     'the-agent-economy.md': 'agents-en',
     'the-agent-economy-zh.md': 'agents-zh',
     'wearables-and-companions.md': 'wearables-en',
-    'wearables-and-companions-zh.md': 'wearables-zh'
+    'wearables-and-companions-zh.md': 'wearables-zh',
+    'when-software-becomes-disposable.md': 'disposable-en',
+    'when-software-becomes-disposable-zh.md': 'disposable-zh',
+    'the-last-mile-of-ai.md': 'lastmile-en',
+    'the-last-mile-of-ai-zh.md': 'lastmile-zh'
 };
 
 var entries = {};
