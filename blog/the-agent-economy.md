@@ -1,7 +1,12 @@
-# The Agent Economy: Marketplaces, Digital Twins, and Proxy Social Networks
-
-*Xingfan Xia — February 2026*
-
+---
+title: "The Agent Economy: Marketplaces, Digital Twins, and Proxy Social Networks"
+date: "2026-02-19"
+summary: "Agents will live your life for you — socializing, negotiating, filtering. The infrastructure for agent identity, payment, reputation, and proxy social networks is the next platform play."
+tags: ["AI", "Agents"]
+series: "Agentic AI Thoughts"
+part: 3
+type: "Post"
+status: "Published"
 ---
 
 ## Agents Are Coming for Everything
@@ -107,4 +112,3 @@ The companion economy comes first — that's the most direct human need. But the
 The real opportunity isn't in building agents. It's in building the **infrastructure agents need to interact with each other and with humans**. Identity, trust, payment, reputation, quality assurance.
 
 That's the platform play. And it's wide open.
-
