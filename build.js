@@ -26,8 +26,12 @@ var FILE_TO_ID = {
     'when-software-becomes-disposable-zh.md': 'disposable-zh',
     'the-last-mile-of-ai.md': 'lastmile-en',
     'the-last-mile-of-ai-zh.md': 'lastmile-zh',
+    'you-are-the-manager.md': 'manager-en',
+    'you-are-the-manager-zh.md': 'manager-zh',
     'why-claude-code.md': 'claudecode-en',
-    'why-claude-code-zh.md': 'claudecode-zh'
+    'why-claude-code-zh.md': 'claudecode-zh',
+    'the-printing-press-moment.md': 'printing-en',
+    'the-printing-press-moment-zh.md': 'printing-zh'
 };
 
 var entries = {};

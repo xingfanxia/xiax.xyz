@@ -661,14 +661,16 @@ var SITE_CONTENT = (function() {
         {
             cmd: 'ls -la posts/',
             output: [
-                '<span class="output-dim">total 5 posts</span>',
+                '<span class="output-dim">total 8 posts</span>',
                 '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-en">the-companion-vision.md</a>  <span class="output-dim">\u2014 Building AI That Truly Understands You</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-en">the-agent-economy.md</a>  <span class="output-dim">\u2014 Agent Marketplaces and Proxy Social Networks</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="wearables-en">wearables-and-companions.md</a>  <span class="output-dim">\u2014 Wearables as the Nervous System of AI Companions</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 21</span>  <a href="#" class="output-link blog-post-link" data-post="disposable-en">when-software-becomes-disposable.md</a>  <span class="output-dim">\u2014 When Software Becomes Disposable</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="lastmile-en">the-last-mile-of-ai.md</a>  <span class="output-dim">\u2014 The Last Mile of AI</span>',
-                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="claudecode-en">why-claude-code.md</a>  <span class="output-dim">\u2014 Why Claude Code Changes Everything</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="manager-en">you-are-the-manager.md</a>  <span class="output-dim">\u2014 You Are the Manager</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="claudecode-en">why-claude-code.md</a>  <span class="output-dim">\u2014 Why Claude Code</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="printing-en">the-printing-press-moment.md</a>  <span class="output-dim">\u2014 The Printing Press Moment</span>',
                 '',
                 '<span class="output-dim">// click a post to read \u2014 toggle [\u4E2D\u6587] inside</span>',
                 '',
@@ -705,8 +707,12 @@ var SITE_CONTENT = (function() {
             'disposable-zh': {file: 'blog/when-software-becomes-disposable-zh.md', title: 'when-software-becomes-disposable-zh.md', alt: 'disposable-en', altLabel: '[EN]'},
             'lastmile-en': {file: 'blog/the-last-mile-of-ai.md', title: 'the-last-mile-of-ai.md', alt: 'lastmile-zh', altLabel: '[\u4E2D\u6587]'},
             'lastmile-zh': {file: 'blog/the-last-mile-of-ai-zh.md', title: 'the-last-mile-of-ai-zh.md', alt: 'lastmile-en', altLabel: '[EN]'},
+            'manager-en': {file: 'blog/you-are-the-manager.md', title: 'you-are-the-manager.md', alt: 'manager-zh', altLabel: '[\u4E2D\u6587]'},
+            'manager-zh': {file: 'blog/you-are-the-manager-zh.md', title: 'you-are-the-manager-zh.md', alt: 'manager-en', altLabel: '[EN]'},
             'claudecode-en': {file: 'blog/why-claude-code.md', title: 'why-claude-code.md', alt: 'claudecode-zh', altLabel: '[\u4E2D\u6587]'},
-            'claudecode-zh': {file: 'blog/why-claude-code-zh.md', title: 'why-claude-code-zh.md', alt: 'claudecode-en', altLabel: '[EN]'}
+            'claudecode-zh': {file: 'blog/why-claude-code-zh.md', title: 'why-claude-code-zh.md', alt: 'claudecode-en', altLabel: '[EN]'},
+            'printing-en': {file: 'blog/the-printing-press-moment.md', title: 'the-printing-press-moment.md', alt: 'printing-zh', altLabel: '[\u4E2D\u6587]'},
+            'printing-zh': {file: 'blog/the-printing-press-moment-zh.md', title: 'the-printing-press-moment-zh.md', alt: 'printing-en', altLabel: '[EN]'}
         }
     };
 })();
