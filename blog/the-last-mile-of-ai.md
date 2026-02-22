@@ -39,6 +39,14 @@ The agent space looks exactly the same. The foundational model capabilities are 
 
 Everyone's discussing what agents can do. Very few are solving how ordinary people can get to use them.
 
+Some products are partially solving the entry point problem. Take my own example — I used OpenClaw to build a fully automated AI engineer for PanPanMao on GCP, integrated with Feishu (a workplace messaging app). Team members don't need to file bug reports or feature requests with me. They just chat with the agent in the Feishu group. The agent automatically validates and triages issues, creates GitHub Issues, generates task tracking; for simple bugs, it submits fix PRs directly; for structural changes and feature requests, it creates a detailed report in the GitHub Issue — complete with context, analysis, and recommendations. This massively freed me up: instead of collecting information from team members one by one, all I need to do is think and make decisions.
+
+For the team members, using the agent is as simple as chatting with a colleague in Feishu. The entry point problem is genuinely solved.
+
+But the person who built that experience was me — an engineer who works in Claude Code every day. **Ordinary users don't have the ability, the inclination, or even the awareness to set any of this up.** They don't even know this kind of experience is possible.
+
+So the essence of the "last mile" isn't "agents aren't good enough" — it's "someone has to pave that road for you." Right now, that someone can only be a technical person. And the vast majority of people don't have a technical person in their life willing to spend the time paving it.
+
 ## The Perception Gap
 
 The second discovery went deeper than the first.
