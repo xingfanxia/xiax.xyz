@@ -63,15 +63,13 @@ The moats from [Part 8](https://blog.ax0x.ai/the-printing-press-moment) — data
 
 ## The Throughline
 
-Nine articles. One idea, getting sharper.
+This series started with [a vision for an AI companion](/the-companion-vision) and arrived at [the paradigm shift has already happened](/the-printing-press-moment). Nine articles, each filling in a piece of the puzzle.
 
-[Part 1](https://blog.ax0x.ai/the-companion-vision) imagined an AI that truly understands you. [Part 2](https://blog.ax0x.ai/wearables-and-companions) said everyone deserves CEO-level resources. [Part 4](https://blog.ax0x.ai/when-software-becomes-disposable) said software becomes disposable. [Part 5](https://blog.ax0x.ai/the-last-mile-of-ai) said the bottleneck is education. [Part 6](https://blog.ax0x.ai/you-are-the-manager) said the skill is managing agents. [Part 7](https://blog.ax0x.ai/why-claude-code) said the harness matters more than the model. [Part 8](https://blog.ax0x.ai/the-printing-press-moment) said the paradigm shift already happened.
+The final piece: code that evolves itself. When an agent understands its own source code, the loop closes — it no longer needs you to tell it how. It figures it out.
 
-This is what comes after: software that knows itself and improves itself. An agent that doesn't just execute your intent — it understands its own architecture well enough to evolve without you.
+Peter built OpenClaw in one hour. Three months later, 175,000 stars, no venture capital. The software is rewriting itself.
 
-Peter built OpenClaw in one hour. It rewrites itself. 175,000 stars. One person, three months, no venture capital.
-
-The tools exist. The models exist. The only question is who learns to use them first.
+This isn't the future. This is now.
 
 ---
 
