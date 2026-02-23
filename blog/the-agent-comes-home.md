@@ -1,5 +1,5 @@
 ---
-title: "When Software Knows Itself"
+title: "Code That Evolves Itself"
 date: "2026-02-22"
 summary: "When an agent understands its own source code, the loop closes. Software stops being something you build — it starts building itself."
 tags: ["AI", "Agents"]
@@ -11,7 +11,7 @@ status: "Published"
 
 ## The Missing Loop
 
-Eight articles into this series, I thought I'd mapped out the full picture. Agents write code ([Part 7](/why-claude-code)). Agents replace apps ([Part 4](/when-software-becomes-disposable)). You manage agents instead of writing code yourself ([Part 6](/you-are-the-manager)). The paradigm shift already happened ([Part 8](/the-printing-press-moment)).
+Eight articles into this series, I thought I'd mapped out the full picture. Agents write code ([Part 7](https://blog.ax0x.ai/why-claude-code)). Agents replace apps ([Part 4](https://blog.ax0x.ai/when-software-becomes-disposable)). You manage agents instead of writing code yourself ([Part 6](https://blog.ax0x.ai/you-are-the-manager)). The paradigm shift already happened ([Part 8](https://blog.ax0x.ai/the-printing-press-moment)).
 
 But I was missing a loop. The one that makes all the other pieces click.
 
@@ -31,13 +31,13 @@ And then this started happening: users who have never written code send what Pet
 
 "People talk about self-modifying software," Peter said. "I just built it."
 
-This is a fundamentally different loop from anything I've described in this series. In [Part 6](/you-are-the-manager), the shift was from writing code to managing agents. In [Part 7](/why-claude-code), the insight was that the harness unlocks the model's potential. But self-aware software closes a new loop entirely: the agent doesn't need a manager. It manages itself. The one-hour prototype evolves on its own.
+This is a fundamentally different loop from anything I've described in this series. In [Part 6](https://blog.ax0x.ai/you-are-the-manager), the shift was from writing code to managing agents. In [Part 7](https://blog.ax0x.ai/why-claude-code), the insight was that the harness unlocks the model's potential. But self-aware software closes a new loop entirely: the agent doesn't need a manager. It manages itself. The one-hour prototype evolves on its own.
 
 ## The Evidence Was in My Own Hands
 
 When I look back, the signs were already there in my own experience.
 
-I set up OpenClaw on GCP and connected it to Feishu so non-technical team members could work directly with an agent — I wrote about this in [Part 5](/the-last-mile-of-ai). What I didn't emphasize enough was what happened *after* the initial setup. The agent didn't just answer questions. When someone needed a small tool that didn't exist, the agent built it. When a workflow was inefficient, the agent figured out a shortcut. It wasn't waiting for instructions — it was solving problems with whatever it had.
+I set up OpenClaw on GCP and connected it to Feishu so non-technical team members could work directly with an agent — I wrote about this in [Part 5](https://blog.ax0x.ai/the-last-mile-of-ai). What I didn't emphasize enough was what happened *after* the initial setup. The agent didn't just answer questions. When someone needed a small tool that didn't exist, the agent built it. When a workflow was inefficient, the agent figured out a shortcut. It wasn't waiting for instructions — it was solving problems with whatever it had.
 
 Peter saw the same thing in Marrakesh. He sent his agent a voice message — something he'd never built support for. The agent received an unknown file, checked the file header, identified Opus audio, used ffmpeg to convert it, found an OpenAI API key in the environment, called the transcription API, and answered the question.
 
@@ -55,17 +55,17 @@ Every standalone app is a frozen assumption about what you need. MyFitnessPal as
 
 An agent that knows you — your schedule, your location, your habits — doesn't need any of those assumptions. "Remind me about dinner tomorrow, invite two friends, send them a message." Done. No app required.
 
-This is where [Part 4](/when-software-becomes-disposable)'s "disposable software" thesis reaches its logical end. I argued that AI makes software cheap enough to generate on demand. The actual endgame is more radical: you don't even need to generate software. The agent *is* the software. Every app becomes a slow API that your agent navigates — through legitimate APIs when available, through the browser when not. Peter watched his agent click "I'm not a robot" buttons. The agent doesn't care about your UX.
+This is where [Part 4](https://blog.ax0x.ai/when-software-becomes-disposable)'s "disposable software" thesis reaches its logical end. I argued that AI makes software cheap enough to generate on demand. The actual endgame is more radical: you don't even need to generate software. The agent *is* the software. Every app becomes a slow API that your agent navigates — through legitimate APIs when available, through the browser when not. Peter watched his agent click "I'm not a robot" buttons. The agent doesn't care about your UX.
 
 And when the agent can build custom software just for you — a one-off tool tailored to your exact need, used once and discarded — why would you pay monthly for a service that does 80% of what you want?
 
-The moats from [Part 8](/the-printing-press-moment) — data lock-in, workflow lock-in, integration complexity — crumble at every level. Not just enterprise SaaS. Every app on your phone.
+The moats from [Part 8](https://blog.ax0x.ai/the-printing-press-moment) — data lock-in, workflow lock-in, integration complexity — crumble at every level. Not just enterprise SaaS. Every app on your phone.
 
 ## The Throughline
 
 Nine articles. One idea, getting sharper.
 
-[Part 1](/the-companion-vision) imagined an AI that truly understands you. [Part 2](/wearables-and-companions) said everyone deserves CEO-level resources. [Part 4](/when-software-becomes-disposable) said software becomes disposable. [Part 5](/the-last-mile-of-ai) said the bottleneck is education. [Part 6](/you-are-the-manager) said the skill is managing agents. [Part 7](/why-claude-code) said the harness matters more than the model. [Part 8](/the-printing-press-moment) said the paradigm shift already happened.
+[Part 1](https://blog.ax0x.ai/the-companion-vision) imagined an AI that truly understands you. [Part 2](https://blog.ax0x.ai/wearables-and-companions) said everyone deserves CEO-level resources. [Part 4](https://blog.ax0x.ai/when-software-becomes-disposable) said software becomes disposable. [Part 5](https://blog.ax0x.ai/the-last-mile-of-ai) said the bottleneck is education. [Part 6](https://blog.ax0x.ai/you-are-the-manager) said the skill is managing agents. [Part 7](https://blog.ax0x.ai/why-claude-code) said the harness matters more than the model. [Part 8](https://blog.ax0x.ai/the-printing-press-moment) said the paradigm shift already happened.
 
 This is what comes after: software that knows itself and improves itself. An agent that doesn't just execute your intent — it understands its own architecture well enough to evolve without you.
 
