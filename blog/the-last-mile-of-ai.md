@@ -55,21 +55,13 @@ This doesn't solve the whole problem — users still need to learn how to give g
 
 ## The Perception Gap
 
-The second discovery went deeper than the first.
+My friend had used ChatGPT, Doubao, various free chatbots. His mental model of AI was the same as most people's: a Q&A tool that's slightly smarter than a search engine. That's roughly 99.99% of people's understanding.
 
-My friend wasn't unaware of AI — he'd used ChatGPT, Doubao, various free chatbots. His mental model of AI was: "a Q&A tool that's slightly smarter than a search engine."
+He had one advantage over most — I'd been sharing real AI agent use cases with him, so he knew this stuff "should be impressive." But knowing and seeing are two different things.
 
-That's roughly 99.99% of people's understanding.
+That weekend we did three things. Claude Code read his financial data, built models, generated analytical reports, iterated based on his feedback — not answering questions about finance, but actually doing financial analysis. Then we built a voice-controlled Flappy Bird from scratch — about an hour, zero to playable, two grown men screaming at a laptop trying to keep a pixelated bird from smashing into pipes. Finally, Claude Code built him a custom tool tailored entirely to his business — not some generic software configuration, but an application that existed solely for his needs.
 
-But my friend was different. Because I'd been sharing cases with him, he came in with expectations — he knew this stuff "should be impressive." But knowing and seeing are two different things.
-
-When Claude Code did financial analysis for him — not "answer questions about finance," but actually read his data, build models, generate analytical reports, then iterate based on his feedback — his reaction wasn't "yeah, like you said." It was **genuine awe.** The kind of "I knew it could do this, but watching it work on my own data hits completely differently" awe.
-
-Then we built something even more fun: a voice-controlled Flappy Bird game from scratch using Claude Code. Took about an hour. The gameplay mechanic: the pitch of your voice controls the bird's altitude. What followed was two grown men screaming "AHHH—ahhh—AHHH" at a laptop, voices lurching up and down, trying to keep a pixelated bird from smashing into pipes. The room was filled with absurd, undulating howls. He couldn't stop laughing.
-
-But after the laughter subsided, he went quiet. Because he realized something: **an hour ago, this game didn't exist. Now it does. And it exists for the sole purpose of two friends having fun in this moment.**
-
-Then when Claude Code built him a custom tool tailored entirely to his business scenario — not some generic software configuration, but an application that existed solely for his needs — he went quiet for a long time again.
+When we were done, he said one thing: **"An hour ago, none of this existed."**
 
 This validates the "disposable software" thesis from [Part 4](/when-software-becomes-disposable): building software for a single person is already technically feasible. **But 99.99% of people don't even know they can ask for it.**
 
