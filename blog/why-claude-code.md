@@ -21,7 +21,7 @@ And it's not just commits. Mercury's data shows 70% of startups now choose Claud
 
 As someone who works inside Claude Code every day, this number doesn't surprise me. What surprises me is that mainstream analysts are finally taking it seriously.
 
-## The Model Didn't Change — It Got a Harness
+## A Brain That Judges, Hands That Act
 
 SemiAnalysis used an analogy I think nails it: the ChatGPT era is Web 1.0, the Claude Code era is Web 2.0.
 
@@ -29,17 +29,21 @@ Web 1.0 was static pages — you send a request, the server returns a page. TCP/
 
 The ChatGPT API is AI's TCP/IP. You send a text, the model returns a text. Call and response, back and forth. The model's capabilities are there, but it's being treated as a raw commodity.
 
-Claude Code does something fundamentally different. It wraps the model in a **harness** — reading the codebase, formulating execution plans, invoking tools, running commands, verifying results, self-debugging, iterating until the task is complete. The underlying model is the same, but the harness pulls the model's potential from "answering questions" to "completing tasks."
+Claude Code does something fundamentally different. It wraps the model in a **harness** — reading the codebase, formulating execution plans, invoking tools, running commands, verifying results, self-debugging, iterating until the task is complete. The harness pulls the model's action space from "answering questions" to "completing tasks."
 
 Boris Cherny — Claude Code's creator — told an origin story in recent interviews that perfectly illustrates this. In September 2024, he was just trying out Anthropic's API, so he wrote the simplest possible terminal chat program in TypeScript. Then he gave the model a Bash tool — purely because that's what the documentation example showed. The model could now read files and execute commands. He casually asked: "What music am I listening to?"
 
 The model wrote an AppleScript, took control of his Mac, queried the music player, and told him the name of the song playing. This was still Sonnet 3.5 — a model that looks quite limited by today's standards. Nobody taught it to do this. Nobody wrote "please control the user's computer" in the prompt. Once given the tool, **the model figured out on its own how to use it to complete the task**. Boris said it was the first time he truly felt AGI: "This model just wants to use tools. That's all it wants to do."
 
-The harness doesn't force the model to do things — it makes possible what the model already wants to do.
+But that's only half the story. The harness matters — but what matters more is that **the brain itself evolved**.
 
-This is the core of the paradigm shift. Not that the model got smarter — but that **we finally learned how to harness it**.
+Today's foundation models are no longer text-completion machines. Opus can autonomously reason about what to do next, judge which tool to invoke, decide the next action based on the tool's output, and chain a series of decisions to complete a complex task. This cycle of "think → act → judge → act again" is the essence of an agentic model. The key isn't just that it gained hands to use tools — it's that it gained the ability to **orchestrate tools and make judgments**.
 
-In the ChatGPT era, 90% of the model's capability was wasted. You ask a question, it gives an answer, then waits for your next question. Between each turn, all context, judgment, and intermediate state gets discarded. What Claude Code's harness does is: keep the model working continuously, maintain state across multiple steps, self-adjust when hitting obstacles, and keep converging on the goal. The model's intelligence didn't change, but utilization went from 10% to 90%.
+The harness gives this brain enough tools and hands to execute. Codebase access, shell commands, API calls, the file system — action space. But the one making decisions is the model itself.
+
+This is fundamentally different from all previous automation. Traditional non-agentic systems — CI/CD pipelines, automation scripts, RPA — execute along hardcoded rules: if A then B, else C. No judgment. Hit an unexpected situation and they freeze. They have hands, but no brain.
+
+The agentic paradigm inverts this: **brain first, hands second.** The model first understands the task, decomposes the goal, plans a path, then invokes tools to execute. When it hits an obstacle, it doesn't freeze — it finds another way. This is why the agentic paradigm can become a truly general agent: the capability boundary is no longer predefined rules, but the model's judgment. And that judgment is improving exponentially.
 
 Most people — the 99.99% I discussed in [Part 5](/the-last-mile-of-ai) — still think of AI as "a slightly smarter search engine." But Claude Code has already proven that AI can be an executor. You give it an objective, it gives you an outcome.
 
@@ -67,6 +71,8 @@ The Claude Code paradigm: **human describes intent, AI executes.**
 
 This isn't a feature gap. It's a fundamental paradigm gap.
 
+## Building for the Model Six Months From Now
+
 Another thing unique to Anthropic is its judgment about the model capability curve. Boris says Claude Code's team lives by a core belief: **don't build for today's model — build for the model six months from now.** When Claude Code first launched, the model could only write about 10-20% of Boris's code. The product wasn't great. But they were betting the model would improve — and they knew it would, because Anthropic's three co-founders are the first three authors of the Scaling Laws paper. Exponential growth isn't a belief for them; it's daily experience.
 
 On the wall of the Claude Code team's office hangs a framed copy of Rich Sutton's "The Bitter Lesson" — the core argument being that more general models always end up beating more specialized ones. This is why they don't add complex scaffolding and workflow orchestration to Claude Code. Boris says scaffolding might improve performance by 10-20%, but the next model wipes out those incremental gains. Rather than constantly rebuilding scaffolding, they bet on the model itself.
@@ -76,6 +82,8 @@ This "build for the future model" philosophy also explains a startling fact abou
 And the Claude Code team builds Claude Code with Claude Code. Boris says that since Opus 4.5, 100% of his personal code is written by Claude Code — he's uninstalled his IDE and hasn't manually edited a single line. He submits 10 to 30 PRs per day. Cowork, launched in January, was built by 4 engineers in 10 days, entirely written by Claude Code. Even Plan Mode — which Boris says is essentially just adding one sentence to the prompt saying "please don't write code yet" — was something he built in 30 minutes on a Sunday night while browsing GitHub Issues, and shipped the next morning.
 
 The product builds itself with itself. User needs become features directly. That self-reinforcing loop is very hard for competitors to replicate.
+
+Claude Code also unlocks a unique scaling dimension: parallel agents. A simple bug needs one agent. Complex problems? Boris launches three, five, even ten agents simultaneously, each investigating from a different angle. He calls it "uncorrelated context windows" — more independent context windows mean more capability, not just more speed. It's parallel thinking, not just parallel computing.
 
 Boris thinks Plan Mode's days are numbered. "I think plan mode probably has a limited lifespan," he said. "Maybe in a month." Claude Code can already enter plan mode on its own — detecting when a task is complex enough to warrant planning before coding. The next step is the model figuring it out without any explicit mode at all. This is what "build for the model six months from now" looks like in practice — features dissolving into baseline model capability.
 
@@ -97,6 +105,8 @@ Steve Yegge — former Google engineer turned Anthropic advocate — wrote that 
 
 Internally at Anthropic, since Claude Code was introduced, **each engineer's productivity has increased by 150%**. Boris's previous job was leading company-wide code quality at Meta — covering the codebases of Facebook, Instagram, and WhatsApp. There, a dedicated team spending an entire year could see a few percentage points of productivity improvement. 150% in that context is unimaginable.
 
+Even hiring is adapting. YC is experimenting with having engineering candidates submit Claude Code session transcripts — recordings of themselves building a feature with an agent. "You can figure out how someone thinks," the YC partners explained. "Do they look at the logs? Can they correct the agent when it goes off track? Do they think about systems?" The question is no longer "can you write code?" — it's "can you steer an agent?"
+
 The consensus is clear. The practitioners who defined modern programming are saying the same thing, each in their own way: the era of writing code by hand is ending.
 
 But if you think this is only about programming, you're underestimating what's happening. Coding is the first beachhead — not the destination. [Part 8](/the-printing-press-moment) looks at what happens when the paradigm shift spreads beyond code.
@@ -106,4 +116,5 @@ But if you think this is only about programming, you're underestimating what's h
 **References:**
 
 - [SemiAnalysis: Claude Code is the Inflection Point](https://newsletter.semianalysis.com/p/claude-code-is-the-inflection-point)
+
 - [Inside Claude Code With Its Creator Boris Cherny (YC / Light Cone)](https://www.youtube.com/watch?v=PQU9o_5rHC4)

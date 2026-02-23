@@ -61,34 +61,34 @@ This connects directly to the companion vision I wrote about in [Part 1](/the-co
 
 If you won't provide context, won't share what you really think, won't invest time building shared understanding with the agent — then no memory system, however sophisticated, can help you. The upper bound of an AI companion's effectiveness isn't determined by AI capability. It's determined by the depth of your engagement.
 
-## Your Mental Model Is Always Lagging
+## Feedback, Not Redo
 
-Boris told a story that forced even him to recalibrate his own assumptions. One time Claude Code had a memory leak, and he started debugging the old-fashioned way — taking heap snapshots, analyzing them in DevTools, tracing step by step. Meanwhile, a younger engineer on the team simply asked Claude Code: "There seems to be a memory leak, can you look into it?" Claude Code took its own heap snapshots, wrote a temporary analysis tool to parse the data, found the leak, and submitted a fix PR — **faster than Boris debugging manually**. He says he has to constantly remind himself: the model today isn't the model from three months ago. Your mental model of the model's capabilities is always lagging behind reality.
+After my friend learned to give instructions, he hit a second wall: what to do when the output wasn't right.
 
-The most effective engineers on Boris's team are bimodal: either extreme specialists who understand one domain deeper than anyone, or hyper-generalists who span product, design, user research, and engineering simultaneously. One engineer, Daisy, exemplified the new meta-thinking. Instead of implementing a feature directly, she first had Claude Code build a tool that could test arbitrary tools — then used that meta-tool to have Claude write and verify its own implementation. "Not a lot of people get it yet," Boris said. The skill isn't coding anymore. It's thinking about how to set up the agent to solve the problem.
+He had Claude Code analyze a company's financials. The first draft came back. He looked at it: "Not quite." Then: "Do it again."
 
-**Code writing — once considered the core skill of software development — is becoming a baseline AI capability.** The programmer's competitive edge is shifting from "writing code" to "managing AI that writes code."
+This is like handing your employee an investment report and getting back "not quite right, redo it" — they have no idea what's wrong, so they just guess again.
 
-My own experience mirrors this exactly. I no longer "write" code — I describe what I want, and Claude Code implements it. I review code, make decisions, give feedback. My role shifted from programmer to project manager.
+The most important skill in managing AI isn't writing the perfect instruction on the first try — it's **being able to articulate exactly what's wrong when the result misses the mark.**
 
-## Three Principles for the Agent Era
+"The fundamentals section is fine, but I care about the debt structure and cash flow risk, not revenue growth. Use DCF for the valuation, not P/E." That kind of feedback, the agent corrects in one round.
 
-For those who've already crossed the threshold from tool-user to manager, here are three power-user principles from Boris:
+"Not quite right, try again." That kind of feedback, the agent just guesses again.
 
-**Calibrate your trust.** The memory leak story has one core lesson: **your mental model of the model's capabilities is always lagging behind reality.** If you think it can't do something, try it anyway. The biggest waste isn't giving the agent a task too hard and watching it fail — it's never giving it the chance to attempt something you assumed it couldn't do.
+By the end of the weekend, his iteration cycles dropped from five or six rounds to two or three. Not because the AI got smarter — because his feedback got more precise. He stopped saying "wrong" and started saying "direction's right, but switch the valuation model, and add FX exposure to the risk section."
 
-**Keep your instructions minimal.** Boris's personal Claude.md — the instruction file that shapes how Claude Code works for him — is just two lines. One enables auto-merge on pull requests. The other posts PRs to his team's Slack channel. That's it. His advice: "Delete your Claude.md and start fresh. A lot of people overengineer this. Do the minimal possible thing to get the model on track. With every model, you have to add less and less."
+That's management. A good manager doesn't see an imperfect first draft and say "start over" — they say "keep this part, change that part, here's the direction."
 
-**Throw more agents at hard problems.** Boris calibrates the number of parallel sub-agents to a task's difficulty. Easy bug? One agent. Medium complexity? Three agents researching in parallel. Really hard? Five or even ten agents, each investigating a different angle simultaneously. The insight: throwing more independent context windows at a problem is itself a form of compute — what he calls "uncorrelated context windows." More agents means more capability, not just more speed.
+And when you genuinely can't articulate what's wrong — the problem might not be the AI. **It might be that you haven't figured out what you want yet.** When that happens, the best move isn't to keep issuing instructions — it's to use the AI as a thinking partner: "I have a rough idea, help me work through it." That's the third phase from the previous section — from tool to collaborator.
 
-## The Question That Matters
+## The Bottleneck Is You
 
-Even hiring is changing. YC is experimenting with having engineering candidates submit Claude Code session transcripts — recordings of themselves building a feature with an agent. "You can figure out how someone thinks," the YC partners explained. "Do they look at the logs? Can they correct the agent when it goes off track? Do they use plan mode? Do they think about systems?" Boris wants a spider chart — like in NBA 2K — rating engineers on dimensions like systems thinking, testing discipline, product sense, and automation instinct.
+The tools are here. The capability is here. The perception gap from [Part 5](/the-last-mile-of-ai) is being bridged.
 
-Boris's own approach to hiring confirms the shift. He doesn't look for candidates with the strongest technical opinions or the most impressive resumes. He asks one question: "What's an example of when you were wrong?" He wants to see if people can recognize mistakes in hindsight, take ownership, and learn from them. "A lot of very senior people will never really take the blame for a mistake," he said. "But I'm wrong probably half the time. You just have to try stuff."
+But there's a stretch of road only you can walk: learning to think like a manager.
 
-The question is no longer "can you write code?" It's "can you steer an agent to build what's needed?"
+Know what you want. Provide context. Define what "done" looks like. When the result is off, say why. When you're not sure what you want, treat the AI as a partner to think it through.
 
-The tools are here. The capability is here. The bottleneck is you — your management skill, your willingness to engage, your ability to think in goals rather than steps.
+These aren't technical skills — they're management skills. In the agent era, **everyone is a manager**, whether you write code or not.
 
-[Part 7](/why-claude-code) steps back to the bigger picture: why Claude Code specifically became the inflection point, and what it tells us about where this is all heading.
+[Part 7](/why-claude-code) steps back to the bigger picture: why Claude Code specifically became the inflection point.
