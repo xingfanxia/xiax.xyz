@@ -31,7 +31,9 @@ var FILE_TO_ID = {
     'why-claude-code.md': 'claudecode-en',
     'why-claude-code-zh.md': 'claudecode-zh',
     'the-printing-press-moment.md': 'printing-en',
-    'the-printing-press-moment-zh.md': 'printing-zh'
+    'the-printing-press-moment-zh.md': 'printing-zh',
+    'the-agent-comes-home.md': 'agentshome-en',
+    'the-agent-comes-home-zh.md': 'agentshome-zh'
 };
 
 var entries = {};

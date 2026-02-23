@@ -661,7 +661,7 @@ var SITE_CONTENT = (function() {
         {
             cmd: 'ls -la posts/',
             output: [
-                '<span class="output-dim">total 8 posts</span>',
+                '<span class="output-dim">total 9 posts</span>',
                 '',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="companion-en">the-companion-vision.md</a>  <span class="output-dim">\u2014 Building AI That Truly Understands You</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 19</span>  <a href="#" class="output-link blog-post-link" data-post="agents-en">the-agent-economy.md</a>  <span class="output-dim">\u2014 Agent Marketplaces and Proxy Social Networks</span>',
@@ -671,6 +671,7 @@ var SITE_CONTENT = (function() {
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="manager-en">you-are-the-manager.md</a>  <span class="output-dim">\u2014 You Are the Manager</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="claudecode-en">why-claude-code.md</a>  <span class="output-dim">\u2014 Why Claude Code</span>',
                 '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="printing-en">the-printing-press-moment.md</a>  <span class="output-dim">\u2014 The Printing Press Moment</span>',
+                '<span class="output-dim">-rw-r--r--  ax  Feb 22</span>  <a href="#" class="output-link blog-post-link" data-post="agentshome-en">the-agent-comes-home.md</a>  <span class="output-dim">\u2014 The Agent Comes Home</span>',
                 '',
                 '<span class="output-dim">// click a post to read \u2014 toggle [\u4E2D\u6587] inside</span>',
                 '',
@@ -712,7 +713,9 @@ var SITE_CONTENT = (function() {
             'claudecode-en': {file: 'blog/why-claude-code.md', title: 'why-claude-code.md', alt: 'claudecode-zh', altLabel: '[\u4E2D\u6587]'},
             'claudecode-zh': {file: 'blog/why-claude-code-zh.md', title: 'why-claude-code-zh.md', alt: 'claudecode-en', altLabel: '[EN]'},
             'printing-en': {file: 'blog/the-printing-press-moment.md', title: 'the-printing-press-moment.md', alt: 'printing-zh', altLabel: '[\u4E2D\u6587]'},
-            'printing-zh': {file: 'blog/the-printing-press-moment-zh.md', title: 'the-printing-press-moment-zh.md', alt: 'printing-en', altLabel: '[EN]'}
+            'printing-zh': {file: 'blog/the-printing-press-moment-zh.md', title: 'the-printing-press-moment-zh.md', alt: 'printing-en', altLabel: '[EN]'},
+            'agentshome-en': {file: 'blog/the-agent-comes-home.md', title: 'the-agent-comes-home.md', alt: 'agentshome-zh', altLabel: '[\u4E2D\u6587]'},
+            'agentshome-zh': {file: 'blog/the-agent-comes-home-zh.md', title: 'the-agent-comes-home-zh.md', alt: 'agentshome-en', altLabel: '[EN]'}
         }
     };
 })();
