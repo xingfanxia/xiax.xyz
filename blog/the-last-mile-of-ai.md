@@ -87,8 +87,4 @@ So what does latent demand look like in practice? These are real use cases Boris
 
 **Learn anything you want to learn.** Not search-engine-style "what is X" — but "I want to understand X, my background is Y, explain it so I can understand, give me a practical example, walk me through it step by step." A private tutor with infinite patience.
 
-The demand is everywhere. The capability is here. But between "seeing what's possible" and "actually being effective," there's a third gap — the most counterintuitive one.
-
-It's not about learning features or memorizing commands. It's about learning to manage.
-
-That's [Part 6](/you-are-the-manager).
+The demand is everywhere. The capability is here. What's missing is the road — the distance between "not knowing you can ask" and "seeing it done with your own eyes."

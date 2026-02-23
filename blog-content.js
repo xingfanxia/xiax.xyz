@@ -607,11 +607,7 @@ var BLOG_CONTENT = {
         "",
         "**学任何你想学的东西。** 不是搜索引擎式的\"X 是什么\"——而是\"我想理解 X，我的背景是 Y，用我能理解的方式解释，给我一个实际的例子，然后陪我一步步深入\"。Agent 能根据你的知识水平调整解释深度，像一个有无限耐心的私人导师。",
         "",
-        "需求无处不在。能力已经到了。但从\"看到可能性\"到\"真正有效地使用\"之间，还有第三道鸿沟——也是最反直觉的一道。",
-        "",
-        "它不是关于学习功能或记忆命令。它是关于学习管理。",
-        "",
-        "这就是[第六篇](/you-are-the-manager-zh)的内容。"
+        "需求无处不在。能力已经到了。缺的是那段路——从\"不知道可以要\"到\"亲眼看到可以做\"之间的距离。"
     ],
     "lastmile-en": [
         "",
@@ -693,11 +689,7 @@ var BLOG_CONTENT = {
         "",
         "**Learn anything you want to learn.** Not search-engine-style \"what is X\" — but \"I want to understand X, my background is Y, explain it so I can understand, give me a practical example, walk me through it step by step.\" A private tutor with infinite patience.",
         "",
-        "The demand is everywhere. The capability is here. But between \"seeing what's possible\" and \"actually being effective,\" there's a third gap — the most counterintuitive one.",
-        "",
-        "It's not about learning features or memorizing commands. It's about learning to manage.",
-        "",
-        "That's [Part 6](/you-are-the-manager)."
+        "The demand is everywhere. The capability is here. What's missing is the road — the distance between \"not knowing you can ask\" and \"seeing it done with your own eyes.\""
     ],
     "printing-zh": [
         "",
