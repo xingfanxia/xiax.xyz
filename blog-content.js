@@ -613,7 +613,7 @@ var BLOG_CONTENT = {
         "",
         "\"给我弄一个像微信一样的即时通讯软件\"——这种需求太模糊了，人也做不好。服务多少用户？\"像微信\"是指像微信这么难用，还是指支持语音输入？要不要有朋友圈？但如果你说：\"我有一个公司的中文网站，保持视觉风格不变，把所有内容翻译成英文，做一个一模一样的网站出来\"——有明确验收标准的需求，它就可以做得很好。",
         "",
-        "不论是人还是 AI，指望说一两句话就读心术般完美交付，这个期待本身就不切实际。用 AI 最大的瓶颈，不是工具有多 powerful，而是我们能不能像一个好的管理者一样，给它布置任务。"
+        "不论是人还是 AI，指望说一两句话就读心术般完美交付，这个期待本身就不切实际。用 AI 最大的瓶颈，不是工具有多 powerful，而是我们能不能像一个好的管理者一样，给它布置任务。[第六篇](/you-are-the-manager-zh)会展开聊这个。"
     ],
     "lastmile-en": [
         "",
@@ -701,7 +701,7 @@ var BLOG_CONTENT = {
         "",
         "\"Build me something like WeChat\" — that's too vague for anyone, human or AI. How many users? Does \"like WeChat\" mean the UI or the feature set? Do you need Moments? But if you say: \"I have a company website in Chinese. Keep the visual design identical, translate all content to English, build a mirror site\" — that kind of request, with clear acceptance criteria, works.",
         "",
-        "Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager."
+        "Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager. [Part 6](/you-are-the-manager) digs into that."
     ],
     "printing-zh": [
         "",

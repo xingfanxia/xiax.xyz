@@ -93,4 +93,4 @@ Imagine you hired a software engineer and told them: "Build me X." Could they ge
 
 "Build me something like WeChat" — that's too vague for anyone, human or AI. How many users? Does "like WeChat" mean the UI or the feature set? Do you need Moments? But if you say: "I have a company website in Chinese. Keep the visual design identical, translate all content to English, build a mirror site" — that kind of request, with clear acceptance criteria, works.
 
-Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager.
+Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager. [Part 6](/you-are-the-manager) digs into that.
