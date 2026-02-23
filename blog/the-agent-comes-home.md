@@ -67,8 +67,6 @@ Code has learned to evolve itself. The agent reads its own source, modifies its 
 
 Peter built OpenClaw in one hour. Three months later, 175,000 stars. No venture capital, no team. The software is rewriting itself.
 
-This isn't the future. This is now.
-
 ---
 
 **References:**
