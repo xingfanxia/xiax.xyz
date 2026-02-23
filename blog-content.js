@@ -607,7 +607,13 @@ var BLOG_CONTENT = {
         "",
         "**学任何你想学的东西。** 不是搜索引擎式的\"X 是什么\"——而是\"我想理解 X，我的背景是 Y，用我能理解的方式解释，给我一个实际的例子，然后陪我一步步深入\"。Agent 能根据你的知识水平调整解释深度，像一个有无限耐心的私人导师。",
         "",
-        "需求无处不在。能力已经到了。缺的是那段路——从\"不知道可以要\"到\"亲眼看到可以做\"之间的距离。"
+        "需求无处不在。能力已经到了。但最大的瓶颈已经不是工具有多强——而是你能不能给 Agent 布置一个合理的任务。",
+        "",
+        "想象你雇了一个软件工程师，跟他说：\"给我弄个 XX 软件。\"他能在一个晚上弄好吗？如果人能弄好，AI 大概率也能；如果人弄不好，AI 大概率也弄不好。",
+        "",
+        "\"给我弄一个像微信一样的即时通讯软件\"——这种需求太模糊了，人也做不好。服务多少用户？\"像微信\"是指像微信这么难用，还是指支持语音输入？要不要有朋友圈？但如果你说：\"我有一个公司的中文网站，保持视觉风格不变，把所有内容翻译成英文，做一个一模一样的网站出来\"——有明确验收标准的需求，它就可以做得很好。",
+        "",
+        "不论是人还是 AI，指望说一两句话就读心术般完美交付，这个期待本身就不切实际。用 AI 最大的瓶颈，不是工具有多 powerful，而是我们能不能像一个好的管理者一样，给它布置任务。"
     ],
     "lastmile-en": [
         "",
@@ -689,7 +695,13 @@ var BLOG_CONTENT = {
         "",
         "**Learn anything you want to learn.** Not search-engine-style \"what is X\" — but \"I want to understand X, my background is Y, explain it so I can understand, give me a practical example, walk me through it step by step.\" A private tutor with infinite patience.",
         "",
-        "The demand is everywhere. The capability is here. What's missing is the road — the distance between \"not knowing you can ask\" and \"seeing it done with your own eyes.\""
+        "The demand is everywhere. The capability is here. But the biggest bottleneck now isn't how powerful the tools are — it's whether you can give the agent a well-defined task.",
+        "",
+        "Imagine you hired a software engineer and told them: \"Build me X.\" Could they get it done overnight? If a human could succeed with those instructions, AI probably can too. If a human couldn't, AI probably can't either.",
+        "",
+        "\"Build me something like WeChat\" — that's too vague for anyone, human or AI. How many users? Does \"like WeChat\" mean the UI or the feature set? Do you need Moments? But if you say: \"I have a company website in Chinese. Keep the visual design identical, translate all content to English, build a mirror site\" — that kind of request, with clear acceptance criteria, works.",
+        "",
+        "Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager."
     ],
     "printing-zh": [
         "",

@@ -87,4 +87,10 @@ So what does latent demand look like in practice? These are real use cases Boris
 
 **Learn anything you want to learn.** Not search-engine-style "what is X" — but "I want to understand X, my background is Y, explain it so I can understand, give me a practical example, walk me through it step by step." A private tutor with infinite patience.
 
-The demand is everywhere. The capability is here. What's missing is the road — the distance between "not knowing you can ask" and "seeing it done with your own eyes."
+The demand is everywhere. The capability is here. But the biggest bottleneck now isn't how powerful the tools are — it's whether you can give the agent a well-defined task.
+
+Imagine you hired a software engineer and told them: "Build me X." Could they get it done overnight? If a human could succeed with those instructions, AI probably can too. If a human couldn't, AI probably can't either.
+
+"Build me something like WeChat" — that's too vague for anyone, human or AI. How many users? Does "like WeChat" mean the UI or the feature set? Do you need Moments? But if you say: "I have a company website in Chinese. Keep the visual design identical, translate all content to English, build a mirror site" — that kind of request, with clear acceptance criteria, works.
+
+Whether it's a human or an AI, expecting perfect delivery from a one-sentence instruction is unrealistic. The biggest bottleneck in using AI isn't how powerful the tools are — it's whether we can assign tasks like a good manager.
