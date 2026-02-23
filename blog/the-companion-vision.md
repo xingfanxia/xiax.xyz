@@ -53,43 +53,23 @@ What I want to build is memory that captures **the essence of who you are**. Eac
 
 Here's a concrete example: you mention three different career frustrations over three months. A summary-based system stores "user is frustrated with career." A personality-model system notices that all three frustrations share a pattern — you're not actually unhappy with the work, you're unhappy with not being recognized. That insight changes the advice the companion gives. That's the difference between remembering what you said and understanding who you are.
 
-Think of it as building a "virtual you" — an internal model deep enough that the AI can predict not just what you'd say, but *why* you'd say it. (In [Part 3](/the-agent-economy), I'll explore how this same model becomes your "digital twin" — a proxy that socializes on your behalf.)
+Think of it as building a "virtual you" — an internal model deep enough that the AI can predict not just what you'd say, but *why* you'd say it. (In Part 3, I'll explore how this same model becomes your "digital twin" — a proxy that socializes on your behalf.)
 
 That's the hard part. That's the moat.
 
-## Not a Girlfriend Simulator
+## Not a Chatbot — an Organism
 
-Let me be very clear about what this is and isn't.
+This is **not** an NSFW chatbot. Not a girlfriend/boyfriend simulator. This is a **24/7 life coach** — you define the role, and it remembers everything. Not just facts, but the patterns behind the facts.
 
-This is **not** an NSFW chatbot. This is not a girlfriend/boyfriend simulator. Every company that goes that route immediately limits their market to a niche and invites regulatory hell.
+You're stressed about a big decision? It knows your history with similar decisions. It knows you tend to overthink. It knows that last time, you were happier after you just committed. It tells you that — not because it's programmed to be helpful, but because it *knows you*.
 
-This is a **24/7 life coach that actually does things.**
-
-Imagine an AI companion where you define the role: mentor, coach, advisor, therapist — whatever you need. You define what it's biased toward: career, health, relationships, creative work. And it remembers *everything* — not just the facts, but the patterns behind the facts.
-
-You're stressed about a big decision? It knows your history with similar decisions. It knows you tend to overthink. It knows that last time, you were happier after you just committed. And it tells you that — not because it's programmed to be helpful, but because it *knows you*.
-
-## The Architecture: Agents as Organs
-
-Here's the vision I keep coming back to.
-
-What if an AI companion wasn't one monolithic model, but a system of **specialized agents working like organs**?
-
-- A **Memory agent** that processes conversations and extracts personality signals
-
-- An **Emotion agent** that tracks mood and adjusts tone accordingly
-
-- An **Initiative agent** that proactively reaches out based on context (not just responding)
-
-- A **Judgment agent** that decides when to push back, when to comfort, when to challenge
-
-Each agent owns a function, like a biological system. But what makes it an organism — not just a list of features — is how they coordinate. The Memory agent continuously feeds personality signals to the Emotion and Judgment agents. The Emotion agent adjusts the tone before any response reaches the user. The Judgment agent can override the default response — if you're spiraling, it might choose to challenge you rather than comfort you, based on what the Memory agent knows about how you handle stress. And the Initiative agent watches for moments when the system should speak first — a biometric dip, a missed check-in, a pattern that matches a past crisis. The whole system converges before every interaction: what do we know, what does this person need right now, and what's the best way to deliver it?
+To do this, an AI companion can't be one monolithic model. It needs a **system of specialized agents working like organs**: a Memory agent that extracts personality signals, an Emotion agent that adjusts tone, a Judgment agent that decides when to push back versus comfort, and an Initiative agent that proactively reaches out. They coordinate — Memory feeds signals to the others, Judgment can override default responses, Emotion fine-tunes every reply before it's sent. The whole system converges before each interaction: what do we know, what does this person need, and what's the best way to deliver it?
 
 You're not building a chatbot — you're building an **organism**.
 
-This is exactly what I've been prototyping with [OpenClaw](https://github.com/xingfanxia/openclaw). [SOUL.md](http://soul.md/) defines the personality — not just traits, but ambitions, flaws, emotional range. It's a structured document that the AI references before every response to stay in character. [HEARTBEAT.md](http://heartbeat.md/) controls autonomous initiative — a scheduling system where the agent evaluates whether to reach out based on time elapsed, conversation patterns, and detected emotional state. [MEMORY.md](http://memory.md/) handles continuity across conversations — extracting personality signals and storing them as retrievable context for future sessions.
+This is exactly what I've been prototyping with [OpenClaw](https://github.com/xingfanxia/openclaw). SOUL.md defines personality — ambitions, flaws, emotional range. HEARTBEAT.md controls autonomous initiative — the agent evaluates whether to reach out based on conversation patterns and detected emotional state. MEMORY.md handles cross-session continuity — extracting personality signals and storing them as retrievable context.
 
-The early results are... interesting. When an AI has continuity and character, the line between tool and entity gets blurry fast.
+The early results are interesting. When an AI has continuity and character, the line between tool and entity gets blurry fast.
 
 ## The Prototype Was Already Built
 
@@ -104,14 +84,6 @@ My version uses **conversation**. You talk to the AI, and it understands your pe
 That's the same core mechanic the companion needs. Understand someone through conversation. Build a model of who they are. Use it to connect.
 
 The MBTI chatbot was the prototype. The companion is the product.
-
-## Build for China First
-
-One thing I believe deeply: **all humans are fundamentally the same**. The desire to be understood, to be heard, to have someone in your corner — that's universal.
-
-China is the right place to start. The market is massive, the loneliness epidemic is real, and people are willing to pay for emotional value — whether it's through astrology, fortune telling, or companionship. (PanPanMao proved that.) And Chinese consumers are more open to AI companions than Western markets, which carry more stigma around the concept.
-
-Build for China, validate the core loop, then adapt globally. The emotional core doesn't need localization.
 
 ## The Bigger Picture
 
