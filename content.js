@@ -43,15 +43,15 @@ var SITE_CONTENT = (function() {
             cmd: 'cat token-burn.log',
             output: [
                 '',
-                '  <span class="output-dim">Quarterly Token Burn</span>  <span class="output-bold">Total: 24B+</span>',
+                '  <span class="output-dim">Quarterly Token Burn</span>  <span class="output-bold">Total: 31B+</span>',
                 '',
                 '  <span class="output-dim">Q3\'24</span>  <span class="output-dim">\u2588</span> <span class="output-dim">50M</span>',
                 '  <span class="output-dim">Q4\'24</span>  <span class="output-dim">\u2588</span> <span class="output-dim">100M</span>',
                 '  <span class="output-yellow">Q1\'25</span>  <span class="output-yellow">\u2588\u2588</span> <span class="output-yellow">300M</span>',
                 '  <span class="output-yellow">Q2\'25</span>  <span class="output-yellow">\u2588\u2588\u2588</span> <span class="output-yellow">1B</span>',
                 '  <span class="output-highlight">Q3\'25</span>  <span class="output-highlight">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-highlight">3B</span>',
-                '  <span class="output-green">Q4\'25</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">5B</span>',
-                '  <span class="output-green">Q1\'26</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">15B \u25C0</span>',
+                '  <span class="output-green">Q4\'25</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">7B</span>',
+                '  <span class="output-green">Q1\'26</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">20B \u25C0</span>',
                 ''
             ]
         },
