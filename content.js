@@ -33,7 +33,7 @@ var SITE_CONTENT = (function() {
             cmd: 'claude-code --stats',
             output: [
                 '<span class="output-green">\u25A0</span> <span class="output-bold">95%</span> of production code shipped through agentic coding workflows',
-                '<span class="output-green">\u25A0</span> <span class="output-bold">15B+ tokens</span> burned across agentic coding sessions',
+                '<span class="output-green">\u25A0</span> <span class="output-bold">74B+ tokens</span> burned across agentic coding sessions',
                 '<span class="output-green">\u25A0</span> Built custom eval tools, skill systems, and agent orchestration',
                 '<span class="output-green">\u25A0</span> Claude Code + Codex + Cursor \u2014 building tools for the tools',
                 '<span class="output-green">\u25A0</span> <span class="output-dim">1.5 years of daily agentic coding in production</span>'
@@ -43,15 +43,15 @@ var SITE_CONTENT = (function() {
             cmd: 'cat token-burn.log',
             output: [
                 '',
-                '  <span class="output-dim">Quarterly Token Burn</span>  <span class="output-bold">Total: 31B+</span>',
+                '  <span class="output-dim">Quarterly Token Burn</span>  <span class="output-bold">Total: 74B+</span>',
                 '',
                 '  <span class="output-dim">Q3\'24</span>  <span class="output-dim">\u2588</span> <span class="output-dim">50M</span>',
                 '  <span class="output-dim">Q4\'24</span>  <span class="output-dim">\u2588</span> <span class="output-dim">100M</span>',
                 '  <span class="output-yellow">Q1\'25</span>  <span class="output-yellow">\u2588\u2588</span> <span class="output-yellow">300M</span>',
                 '  <span class="output-yellow">Q2\'25</span>  <span class="output-yellow">\u2588\u2588\u2588</span> <span class="output-yellow">1B</span>',
                 '  <span class="output-highlight">Q3\'25</span>  <span class="output-highlight">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-highlight">3B</span>',
-                '  <span class="output-green">Q4\'25</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">7B</span>',
-                '  <span class="output-green">Q1\'26</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">20B \u25C0</span>',
+                '  <span class="output-green">Q4\'25</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">20B</span>',
+                '  <span class="output-green">Q1\'26</span>  <span class="output-green">\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588</span> <span class="output-green">50B \u25C0</span>',
                 ''
             ]
         },
@@ -368,7 +368,7 @@ var SITE_CONTENT = (function() {
         {
             cmd: 'agentic-coding --stats',
             output: [
-                '<span class="output-green">\u25A0</span> <span class="output-bold">15B+ tokens</span> burned across agentic coding sessions',
+                '<span class="output-green">\u25A0</span> <span class="output-bold">74B+ tokens</span> burned across agentic coding sessions',
                 '<span class="output-green">\u25A0</span> <span class="output-bold">1.5 years</span> of daily agentic coding in production',
                 '<span class="output-green">\u25A0</span> <span class="output-bold">70+ claude/</span> and <span class="output-bold">codex/</span> branches in PanPanMao alone',
                 '<span class="output-green">\u25A0</span> <span class="output-bold">Claude Code</span> for architecture + <span class="output-bold">Codex</span> for parallel execution',
