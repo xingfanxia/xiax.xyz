@@ -460,21 +460,9 @@
         });
     }
 
-    // ---- Boot ----
+    // ---- Boot (always typewriter) ----
 
-    if (effects && !effects.disabled) {
-        // Effects boot: render all content instantly, then matrix rain in
-        instantRender('home');
-        if (clickHint) clickHint.style.opacity = '0';
-
-        effectsRunning = true;
-        effects.matrixRain().then(function() {
-            effectsRunning = false;
-        });
-    } else {
-        // Fallback boot: typewriter animation
-        addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
-        trackedTimeout(function() { runSequence(tabSequences['home'], 0); }, Math.max(500 / speed, 10));
-    }
+    addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
+    trackedTimeout(function() { runSequence(tabSequences['home'], 0); }, Math.max(500 / speed, 10));
 
 })();

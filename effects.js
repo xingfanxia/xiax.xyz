@@ -22,7 +22,7 @@
     var AIR_RESISTANCE = 0.965;   // velocity multiplier per frame
     var EXPLOSION_FORCE = 30000;  // inverse-square force at distance=1
     var MIN_BLAST_DIST = 25;      // prevents infinite force near epicenter
-    var SHRAPNEL_MS = 950;        // base explosion duration
+    var SHRAPNEL_MS = 600;        // base explosion duration
     var ASSEMBLY_MS = 750;        // base assembly duration
     var RAIN_MS = 1600;           // base matrix rain duration
     var GRAVITY_FALL_MS = 2200;   // scroll-gravity duration
@@ -395,7 +395,6 @@
 
         this._initSkip();
         this._initMousePush();
-        this._initScrollGravity();
     }
 
     // ---- Skip: click during animation completes instantly ----
@@ -430,7 +429,14 @@
     TerminalEffects.prototype.explode = function(clickX, clickY) {
         if (this.disabled) return Promise.resolve();
 
+        // Instant visual feedback — dim body while extracting
+        this.body.style.opacity = '0.3';
+        this.body.style.transition = 'opacity 0.1s';
+
         var chars = extractCharacters(this.body);
+
+        this.body.style.transition = '';
+        this.body.style.opacity = '';
         if (chars.length === 0) return Promise.resolve();
 
         var bRect = this.body.getBoundingClientRect();
@@ -451,7 +457,7 @@
             p.vy = Math.sin(angle) * force - 80 - Math.random() * 120;
             p.av = (Math.random() - 0.5) * 14;
             p.state = 'shrapnel';
-            p.dur = SHRAPNEL_MS + Math.random() * 350;
+            p.dur = SHRAPNEL_MS + Math.random() * 150;
 
             this.particles.push(p);
         }
@@ -679,7 +685,7 @@
         var BULLET_SPEED = 450;    // px/s
         var BULLET_LIFE = 4000;    // ms (long-lived, bouncing kills them via energy)
         var BULLET_R = 2.5;        // visual radius
-        var BULLET_HIT_R = 12;     // impact radius on characters
+        var BULLET_HIT_R = 24;     // impact radius on characters
         var BULLET_IMPULSE = 160;  // velocity impulse on impact
         var BASE_FIRE_RATE = 6;    // shots/sec at start
         var MAX_FIRE_RATE = 40;    // shots/sec ramped up
@@ -717,22 +723,28 @@
 
         var windowEl = this.body.parentElement;
 
-        // ---- Mouse tracking ----
+        // ---- Double-click to enter Clawd mode ----
+
+        self.body.addEventListener('dblclick', function(e) {
+            if (self.running || self.disabled || active) return;
+            e.preventDefault();
+            activate(e);
+        });
+
+        // ---- Mouse tracking (only while Clawd mode is active) ----
 
         windowEl.addEventListener('mousemove', function(e) {
-            if (self.running || self.disabled) return;
+            if (!active) return;
 
             var bRect = self.body.getBoundingClientRect();
             var inBounds =
-                e.clientX >= bRect.left && e.clientX <= bRect.right &&
-                e.clientY >= bRect.top  && e.clientY <= bRect.bottom;
+                e.clientX >= bRect.left - 10 && e.clientX <= bRect.right + 10 &&
+                e.clientY >= bRect.top - 10  && e.clientY <= bRect.bottom + 10;
 
-            if (inBounds && !active) {
-                activate(e);
-            } else if (inBounds && active) {
+            if (inBounds) {
                 mouseX = e.clientX - bRect.left;
                 mouseY = e.clientY - bRect.top;
-            } else if (!inBounds && active) {
+            } else {
                 deactivate();
             }
         });
@@ -741,7 +753,15 @@
             if (active) deactivate();
         });
 
-        // ---- Shooting ----
+        // Escape exits Clawd mode
+        document.addEventListener('keydown', function(e) {
+            if (active && e.key === 'Escape') {
+                e.preventDefault();
+                deactivate();
+            }
+        });
+
+        // ---- Shooting (left-click while in Clawd mode) ----
 
         windowEl.addEventListener('mousedown', function(e) {
             if (!active || e.button !== 0) return;
@@ -778,6 +798,7 @@
 
             self.canvas.show();
             self.body.style.visibility = 'hidden';
+            self.body.style.overflowY = 'hidden';
             windowEl.style.cursor = 'none';
             clawd.style.display = 'block';
             requestAnimationFrame(function() { clawd.style.opacity = '1'; });
@@ -793,6 +814,7 @@
             if (raf) { cancelAnimationFrame(raf); raf = null; }
             self.canvas.hide();
             self.body.style.visibility = '';
+            self.body.style.overflowY = '';
             particles = null;
             bullets = [];
         }
@@ -818,7 +840,7 @@
                 if (moveSpeed > 1.5) {
                     facingAngle = Math.atan2(moveDy, moveDx);
                     // Flip SVG based on horizontal component
-                    clawd.style.transform = (moveDx < 0) ? 'scaleX(-1)' : 'scaleX(1)';
+                    clawd.style.transform = (moveDx < 0) ? 'scaleX(1)' : 'scaleX(-1)';
                 }
                 prevMouseX = mouseX;
                 prevMouseY = mouseY;
