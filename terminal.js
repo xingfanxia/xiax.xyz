@@ -26,9 +26,23 @@
     var inReaderMode = false;
     var runningTimers = [];
 
+    // ---- Effects integration ----
+    var effects = (typeof TerminalEffects === 'function')
+        ? new TerminalEffects(terminal)
+        : null;
+
+    // Expose re-render hook for scroll-gravity recovery
+    window._terminalRerender = function() {
+        instantRender(activeTab);
+    };
+
+    // Track whether effects are animating (suppresses click-to-skip)
+    var effectsRunning = false;
+
     document.addEventListener('click', function(e) {
-        // Don't trigger skip when clicking tabs or links
+        // Don't trigger skip when clicking tabs or links, or during effects
         if (e.target.closest('.terminal-tab') || e.target.closest('a')) return;
+        if (effectsRunning) return;
         if (!skipped) {
             skipped = true;
             speed = 100;
@@ -81,21 +95,30 @@
 
     // Append a line to the terminal (static trusted content only)
     // SAFE: staticHTML is always a hardcoded string from content.js
-    function addLine(staticHTML, cls) {
+    // When `immediate` is true, line is visible immediately (for instant render)
+    function addLine(staticHTML, cls, immediate) {
         var div = document.createElement('div');
         div.className = 'terminal-line' + (cls ? ' ' + cls : '');
-        div.innerHTML = staticHTML;
+        // SAFE: all HTML comes from hardcoded content.js / blog-content.js
+        div.innerHTML = staticHTML; // eslint-disable-line no-unsanitized/property
         terminal.appendChild(div);
-        requestAnimationFrame(function() { div.classList.add('visible'); });
+        if (immediate) {
+            div.classList.add('visible');
+        } else {
+            requestAnimationFrame(function() { div.classList.add('visible'); });
+        }
         updateLineCount();
         terminal.scrollTop = terminal.scrollHeight;
         return div;
     }
 
-    function addSeparator() {
+    function addSeparator(immediate) {
         var hr = document.createElement('hr');
         hr.className = 'separator';
         terminal.appendChild(hr);
+        if (immediate) {
+            hr.classList.add('visible');
+        }
     }
 
     function makeCursor() {
@@ -108,18 +131,53 @@
         return text.replace(/(--\w+)/g, '<span class="prompt-flag">$1</span>');
     }
 
+    // ---- Instant render (all content at once, no animation) ----
+    // Used by effects system: render everything, then animate characters in.
+
+    function instantRender(tabName) {
+        terminal.textContent = '';
+        lineCount = 0;
+        if (lineCountEl) lineCountEl.textContent = '0 lines';
+
+        var seq = tabSequences[tabName] || tabSequences['home'];
+        var path = tabPaths[tabName] || '~';
+
+        addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '', true);
+
+        for (var i = 0; i < seq.length; i++) {
+            if (i > 0) addSeparator(true);
+
+            addLine(
+                promptMarkup(path) +
+                '<span class="prompt-cmd">' + colorFlags(seq[i].cmd) + '</span>',
+                '', true
+            );
+
+            for (var j = 0; j < seq[i].output.length; j++) {
+                addLine(seq[i].output[j], 'output', true);
+            }
+        }
+
+        // Final prompt with cursor
+        var finalEl = addLine(promptMarkup(path), '', true);
+        finalEl.appendChild(makeCursor());
+
+        terminal.scrollTop = 0;
+    }
+
     function typeCommand(cmd, cb) {
         var line = addLine(promptMarkup(tabPaths[activeTab] || '~'), '');
-        var base = line.innerHTML;
+        var base = line.innerHTML; // eslint-disable-line no-unsanitized/property
         var i = 0;
         var iv = trackedInterval(function() {
             if (i < cmd.length) {
-                line.innerHTML = base + '<span class="prompt-cmd">' + colorFlags(cmd.substring(0, i + 1)) + '</span>';
+                // SAFE: cmd comes from hardcoded content.js
+                line.innerHTML = base + '<span class="prompt-cmd">' + colorFlags(cmd.substring(0, i + 1)) + '</span>'; // eslint-disable-line no-unsanitized/property
                 line.appendChild(makeCursor());
                 i++;
             } else {
                 clearInterval(iv);
-                line.innerHTML = base + '<span class="prompt-cmd">' + colorFlags(cmd) + '</span>';
+                line.innerHTML = base + '<span class="prompt-cmd">' + colorFlags(cmd) + '</span>'; // eslint-disable-line no-unsanitized/property
                 trackedTimeout(cb, Math.max(300 / speed, 5));
             }
         }, Math.max(35 / speed, 2));
@@ -142,39 +200,70 @@
 
     var tabs = document.querySelectorAll('.terminal-tab');
 
-    function switchTab(tabName) {
-        if (tabName === activeTab && !inReaderMode) return;
-
-        // Stop all running animations
-        clearTimers();
-
-        // Update active tab styling
+    function updateTabCSS(tabName) {
         for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove('active');
             if (tabs[i].getAttribute('data-tab') === tabName) {
                 tabs[i].classList.add('active');
             }
         }
+    }
 
-        // Reset terminal
-        activeTab = tabName;
-        inReaderMode = false;
-        terminal.innerHTML = '';
-        lineCount = 0;
-        if (lineCountEl) lineCountEl.textContent = '0 lines';
+    function switchTab(tabName, clickEvent) {
+        if (tabName === activeTab && !inReaderMode) return;
+        if (effectsRunning) return;
 
-        // Reset animation speed — type out at normal pace, click to skip
-        skipped = false;
-        speed = 1;
-        if (clickHint) {
-            clickHint.style.opacity = '1';
-            clickHint.textContent = 'click anywhere to skip animation';
+        clearTimers();
+
+        var clickX = clickEvent ? clickEvent.clientX : window.innerWidth / 2;
+        var clickY = clickEvent ? clickEvent.clientY : window.innerHeight / 2;
+
+        // With effects: explode outgoing, then typewriter the new content
+        if (effects && !effects.disabled) {
+            effectsRunning = true;
+
+            effects.explode(clickX, clickY).then(function() {
+                effectsRunning = false;
+
+                // Now typewriter the new tab (same as original behavior)
+                updateTabCSS(tabName);
+                activeTab = tabName;
+                inReaderMode = false;
+                terminal.textContent = '';
+                lineCount = 0;
+                if (lineCountEl) lineCountEl.textContent = '0 lines';
+
+                skipped = false;
+                speed = 1;
+                if (clickHint) {
+                    clickHint.style.opacity = '1';
+                    clickHint.textContent = 'click anywhere to skip animation';
+                }
+
+                var seq = tabSequences[tabName] || tabSequences['home'];
+                addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
+                trackedTimeout(function() { runSequence(seq, 0); }, Math.max(500 / speed, 10));
+            });
+        } else {
+            // No effects: original typewriter behavior
+            updateTabCSS(tabName);
+            activeTab = tabName;
+            inReaderMode = false;
+            terminal.textContent = '';
+            lineCount = 0;
+            if (lineCountEl) lineCountEl.textContent = '0 lines';
+
+            skipped = false;
+            speed = 1;
+            if (clickHint) {
+                clickHint.style.opacity = '1';
+                clickHint.textContent = 'click anywhere to skip animation';
+            }
+
+            var seq = tabSequences[tabName] || tabSequences['home'];
+            addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
+            trackedTimeout(function() { runSequence(seq, 0); }, Math.max(500 / speed, 10));
         }
-
-        // Boot new tab content
-        var seq = tabSequences[tabName] || tabSequences['home'];
-        addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
-        trackedTimeout(function() { runSequence(seq, 0); }, Math.max(500 / speed, 10));
     }
 
     for (var t = 0; t < tabs.length; t++) {
@@ -182,7 +271,7 @@
             tab.addEventListener('click', function(e) {
                 e.stopPropagation();
                 var tabName = tab.getAttribute('data-tab');
-                switchTab(tabName);
+                switchTab(tabName, e);
             });
         })(tabs[t]);
     }
@@ -250,16 +339,16 @@
             } else if (line.indexOf('## ') === 0) {
                 div.className = 'reader-line reader-h2';
                 // SAFE: static author-written markdown only
-                div.innerHTML = mdToHtml(line.substring(3));
+                div.innerHTML = mdToHtml(line.substring(3)); // eslint-disable-line no-unsanitized/property
             } else if (line.indexOf('# ') === 0) {
                 div.className = 'reader-line reader-h1';
-                div.innerHTML = mdToHtml(line.substring(2));
+                div.innerHTML = mdToHtml(line.substring(2)); // eslint-disable-line no-unsanitized/property
             } else if (line.indexOf('- ') === 0) {
-                div.innerHTML = '<span class="output-green">\u25A0</span> ' + mdToHtml(line.substring(2));
+                div.innerHTML = '<span class="output-green">\u25A0</span> ' + mdToHtml(line.substring(2)); // eslint-disable-line no-unsanitized/property
             } else if (line === '') {
                 div.textContent = '\u00A0';
             } else {
-                div.innerHTML = mdToHtml(line);
+                div.innerHTML = mdToHtml(line); // eslint-disable-line no-unsanitized/property
             }
 
             terminal.appendChild(div);
@@ -292,23 +381,37 @@
         terminal.scrollTop = 0;
     }
 
-    function openBlogPost(postId) {
+    function openBlogPost(postId, clickEvent) {
         var post = blogPosts[postId];
         if (!post) return;
         var content = typeof BLOG_CONTENT !== 'undefined' && BLOG_CONTENT[postId];
-        if (content) {
+        if (!content) return;
+
+        var clickX = clickEvent ? clickEvent.clientX : window.innerWidth / 2;
+        var clickY = clickEvent ? clickEvent.clientY : window.innerHeight / 2;
+
+        // With effects: explode outgoing, then render reader normally
+        if (effects && !effects.disabled) {
+            effectsRunning = true;
+            effects.explode(clickX, clickY).then(function() {
+                effectsRunning = false;
+                renderReader(content, postId);
+            });
+        } else {
             renderReader(content, postId);
         }
     }
 
     // Handle clickable links: tab links, blog posts, reader controls
     terminal.addEventListener('click', function(e) {
+        if (effectsRunning) return;
+
         // Blog post links
         var postLink = e.target.closest('.blog-post-link');
         if (postLink) {
             e.preventDefault();
             e.stopPropagation();
-            openBlogPost(postLink.getAttribute('data-post'));
+            openBlogPost(postLink.getAttribute('data-post'), e);
             return;
         }
 
@@ -317,7 +420,7 @@
         if (backLink) {
             e.preventDefault();
             e.stopPropagation();
-            switchTab('blog');
+            switchTab('blog', e);
             return;
         }
 
@@ -326,7 +429,7 @@
         if (langToggle) {
             e.preventDefault();
             e.stopPropagation();
-            openBlogPost(langToggle.getAttribute('data-post'));
+            openBlogPost(langToggle.getAttribute('data-post'), e);
             return;
         }
 
@@ -336,7 +439,7 @@
             e.preventDefault();
             e.stopPropagation();
             var targetTab = link.getAttribute('data-target-tab');
-            if (targetTab) switchTab(targetTab);
+            if (targetTab) switchTab(targetTab, e);
         }
     });
 
@@ -357,8 +460,21 @@
         });
     }
 
-    // Boot home tab
-    addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
-    trackedTimeout(function() { runSequence(tabSequences['home'], 0); }, Math.max(500 / speed, 10));
+    // ---- Boot ----
+
+    if (effects && !effects.disabled) {
+        // Effects boot: render all content instantly, then matrix rain in
+        instantRender('home');
+        if (clickHint) clickHint.style.opacity = '0';
+
+        effectsRunning = true;
+        effects.matrixRain().then(function() {
+            effectsRunning = false;
+        });
+    } else {
+        // Fallback boot: typewriter animation
+        addLine('<span class="output-dim">Last login: ' + new Date().toDateString() + ' on ttys001</span>', '');
+        trackedTimeout(function() { runSequence(tabSequences['home'], 0); }, Math.max(500 / speed, 10));
+    }
 
 })();
