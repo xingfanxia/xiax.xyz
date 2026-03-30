@@ -677,7 +677,7 @@
 
         // Bullet / machine gun config
         var BULLET_SPEED = 450;    // px/s
-        var BULLET_LIFE = 800;     // ms
+        var BULLET_LIFE = 4000;    // ms (long-lived, bouncing kills them via energy)
         var BULLET_R = 2.5;        // visual radius
         var BULLET_HIT_R = 12;     // impact radius on characters
         var BULLET_IMPULSE = 160;  // velocity impulse on impact
@@ -706,9 +706,8 @@
         var particles = null;
         var mouseX = 0, mouseY = 0;
         var clawdX = 0, clawdY = 0;
-        var prevMouseX = 0;
-        var facingLeft = false;
-        var facingAngle = 0;  // radians, 0 = right
+        var prevMouseX = 0, prevMouseY = 0;
+        var facingAngle = 0;  // radians — follows mouse drag direction
 
         // Bullet state
         var bullets = [];
@@ -773,6 +772,7 @@
             clawdX = mouseX;
             clawdY = mouseY;
             prevMouseX = mouseX;
+            prevMouseY = mouseY;
             bullets = [];
             mouseDown = false;
 
@@ -811,17 +811,17 @@
                 clawdX += (mouseX - clawdX) * FOLLOW_SPEED;
                 clawdY += (mouseY - clawdY) * FOLLOW_SPEED;
 
+                // Face direction follows mouse drag (full 360)
                 var moveDx = mouseX - prevMouseX;
-                if (moveDx < -1.5 && !facingLeft) {
-                    facingLeft = true;
-                    facingAngle = Math.PI;
-                    clawd.style.transform = 'scaleX(-1)';
-                } else if (moveDx > 1.5 && facingLeft) {
-                    facingLeft = false;
-                    facingAngle = 0;
-                    clawd.style.transform = 'scaleX(1)';
+                var moveDy = mouseY - prevMouseY;
+                var moveSpeed = Math.sqrt(moveDx * moveDx + moveDy * moveDy);
+                if (moveSpeed > 1.5) {
+                    facingAngle = Math.atan2(moveDy, moveDx);
+                    // Flip SVG based on horizontal component
+                    clawd.style.transform = (moveDx < 0) ? 'scaleX(-1)' : 'scaleX(1)';
                 }
                 prevMouseX = mouseX;
+                prevMouseY = mouseY;
 
                 // Position Clawd centered on cursor
                 var bRect = self.body.getBoundingClientRect();
@@ -857,31 +857,55 @@
                     lastFireTime = 0;
                 }
 
-                // -- Update bullets --
+                // -- Update bullets (bounce off walls) --
+                var cw = self.canvas.w;
+                var ch = self.canvas.h;
+                var BOUNCE = 0.55; // energy retained per bounce
+                var MIN_SPEED = 30; // remove when slower than this
+
                 for (var b = bullets.length - 1; b >= 0; b--) {
                     var bul = bullets[b];
                     bul.x += bul.vx * dt;
                     bul.y += bul.vy * dt;
                     bul.life -= dt * 1000;
 
+                    // Wall bouncing with energy loss
+                    if (bul.x <= 0) {
+                        bul.x = 0;
+                        bul.vx = Math.abs(bul.vx) * BOUNCE;
+                        bul.vy *= BOUNCE;
+                    } else if (bul.x >= cw) {
+                        bul.x = cw;
+                        bul.vx = -Math.abs(bul.vx) * BOUNCE;
+                        bul.vy *= BOUNCE;
+                    }
+                    if (bul.y <= 0) {
+                        bul.y = 0;
+                        bul.vy = Math.abs(bul.vy) * BOUNCE;
+                        bul.vx *= BOUNCE;
+                    } else if (bul.y >= ch) {
+                        bul.y = ch;
+                        bul.vy = -Math.abs(bul.vy) * BOUNCE;
+                        bul.vx *= BOUNCE;
+                    }
+
                     // Check impacts with characters
                     for (var ci = 0; ci < particles.length; ci++) {
-                        var ch = particles[ci];
-                        var bdx = (ch.x + ch.w * 0.5) - bul.x;
-                        var bdy = (ch.y + ch.h * 0.5) - bul.y;
+                        var chr = particles[ci];
+                        var bdx = (chr.x + chr.w * 0.5) - bul.x;
+                        var bdy = (chr.y + chr.h * 0.5) - bul.y;
                         var bdist = Math.sqrt(bdx * bdx + bdy * bdy);
 
                         if (bdist < BULLET_HIT_R) {
-                            // Apply impulse — push char away from bullet direction
                             var impAngle = Math.atan2(bdy, bdx);
-                            ch.vx += Math.cos(impAngle) * BULLET_IMPULSE * dt * 8;
-                            ch.vy += Math.sin(impAngle) * BULLET_IMPULSE * dt * 8;
+                            chr.vx += Math.cos(impAngle) * BULLET_IMPULSE * dt * 8;
+                            chr.vy += Math.sin(impAngle) * BULLET_IMPULSE * dt * 8;
                         }
                     }
 
-                    // Remove dead bullets
-                    if (bul.life <= 0 || bul.x < -50 || bul.x > self.canvas.w + 50 ||
-                        bul.y < -50 || bul.y > self.canvas.h + 50) {
+                    // Remove when too slow or timed out
+                    var speed = Math.sqrt(bul.vx * bul.vx + bul.vy * bul.vy);
+                    if (bul.life <= 0 || speed < MIN_SPEED) {
                         bullets.splice(b, 1);
                     }
                 }
