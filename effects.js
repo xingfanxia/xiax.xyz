@@ -819,13 +819,8 @@
             }
         });
 
-        // Tap titlebar, statusbar, or outside terminal → exit Clawd mode
-        document.addEventListener('click', function(e) {
-            if (!active) return;
-            if (!self.body.contains(e.target) && !e.target.closest('#clawd')) {
-                deactivate();
-            }
-        });
+        // Mobile: tap outside terminal body → exit Clawd mode
+        // (Desktop exits via mousemove bounds check — no click handler needed)
         document.addEventListener('touchstart', function(e) {
             if (!active) return;
             var touch = e.touches[0];
