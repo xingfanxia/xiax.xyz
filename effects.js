@@ -762,11 +762,27 @@
         });
 
         // ================ Mobile: double-tap to enter, touch to shoot ================
+        // NOTE: Once Clawd is active, self.body is visibility:hidden and won't
+        // receive touch events. So shooting listeners go on windowEl/document.
 
         var lastTapTime = 0;
 
-        // Touch-start: if in Clawd mode, start shooting. Otherwise ignore.
-        self.body.addEventListener('touchstart', function(e) {
+        // Double-tap detection (on body — it's visible before Clawd activates)
+        self.body.addEventListener('touchend', function(e) {
+            if (active || self.running || self.disabled) return;
+            var now = Date.now();
+            if (now - lastTapTime < 350) {
+                e.preventDefault();
+                var touch = e.changedTouches[0];
+                activate(touch.clientX, touch.clientY);
+                lastTapTime = 0;
+            } else {
+                lastTapTime = now;
+            }
+        }, { passive: false });
+
+        // Touch-start on windowEl: start shooting if in Clawd mode
+        windowEl.addEventListener('touchstart', function(e) {
             if (!active || self.running) return;
             e.preventDefault();
             var touch = e.touches[0];
@@ -778,7 +794,8 @@
             lastFireTime = 0;
         }, { passive: false });
 
-        self.body.addEventListener('touchmove', function(e) {
+        // Touch-move on document: drag to aim (document so we don't lose it)
+        document.addEventListener('touchmove', function(e) {
             if (!active) return;
             e.preventDefault();
             var touch = e.touches[0];
@@ -787,24 +804,11 @@
             mouseY = touch.clientY - bRect.top;
         }, { passive: false });
 
-        // Touch-end: stop shooting, or detect double-tap to enter/exit
-        self.body.addEventListener('touchend', function(e) {
-            if (active) {
-                mouseDown = false;
-                return;
-            }
-            // Not in Clawd mode — detect double-tap
-            if (self.running || self.disabled) return;
-            var now = Date.now();
-            if (now - lastTapTime < 350) {
-                e.preventDefault();
-                var touch = e.changedTouches[0];
-                activate(touch.clientX, touch.clientY);
-                lastTapTime = 0;
-            } else {
-                lastTapTime = now;
-            }
-        }, { passive: false });
+        // Touch-end on document: stop shooting
+        document.addEventListener('touchend', function(e) {
+            if (!active) return;
+            mouseDown = false;
+        }, { passive: true });
 
         // ================ Shared: Escape / tap-outside exits ================
 
