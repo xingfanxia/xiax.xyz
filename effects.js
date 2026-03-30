@@ -723,24 +723,20 @@
 
         var windowEl = this.body.parentElement;
 
-        // ---- Double-click to enter Clawd mode ----
+        // ================ Desktop: double-click to enter ================
 
         self.body.addEventListener('dblclick', function(e) {
             if (self.running || self.disabled || active) return;
             e.preventDefault();
-            activate(e);
+            activate(e.clientX, e.clientY);
         });
-
-        // ---- Mouse tracking (only while Clawd mode is active) ----
 
         windowEl.addEventListener('mousemove', function(e) {
             if (!active) return;
-
             var bRect = self.body.getBoundingClientRect();
             var inBounds =
                 e.clientX >= bRect.left - 10 && e.clientX <= bRect.right + 10 &&
                 e.clientY >= bRect.top - 10  && e.clientY <= bRect.bottom + 10;
-
             if (inBounds) {
                 mouseX = e.clientX - bRect.left;
                 mouseY = e.clientY - bRect.top;
@@ -752,16 +748,6 @@
         windowEl.addEventListener('mouseleave', function() {
             if (active) deactivate();
         });
-
-        // Escape exits Clawd mode
-        document.addEventListener('keydown', function(e) {
-            if (active && e.key === 'Escape') {
-                e.preventDefault();
-                deactivate();
-            }
-        });
-
-        // ---- Shooting (left-click while in Clawd mode) ----
 
         windowEl.addEventListener('mousedown', function(e) {
             if (!active || e.button !== 0) return;
@@ -775,9 +761,81 @@
             mouseDown = false;
         });
 
+        // ================ Mobile: double-tap to enter, touch to shoot ================
+
+        var lastTapTime = 0;
+
+        // Touch-start: if in Clawd mode, start shooting. Otherwise ignore.
+        self.body.addEventListener('touchstart', function(e) {
+            if (!active || self.running) return;
+            e.preventDefault();
+            var touch = e.touches[0];
+            var bRect = self.body.getBoundingClientRect();
+            mouseX = touch.clientX - bRect.left;
+            mouseY = touch.clientY - bRect.top;
+            mouseDown = true;
+            holdStart = performance.now();
+            lastFireTime = 0;
+        }, { passive: false });
+
+        self.body.addEventListener('touchmove', function(e) {
+            if (!active) return;
+            e.preventDefault();
+            var touch = e.touches[0];
+            var bRect = self.body.getBoundingClientRect();
+            mouseX = touch.clientX - bRect.left;
+            mouseY = touch.clientY - bRect.top;
+        }, { passive: false });
+
+        // Touch-end: stop shooting, or detect double-tap to enter/exit
+        self.body.addEventListener('touchend', function(e) {
+            if (active) {
+                mouseDown = false;
+                return;
+            }
+            // Not in Clawd mode — detect double-tap
+            if (self.running || self.disabled) return;
+            var now = Date.now();
+            if (now - lastTapTime < 350) {
+                e.preventDefault();
+                var touch = e.changedTouches[0];
+                activate(touch.clientX, touch.clientY);
+                lastTapTime = 0;
+            } else {
+                lastTapTime = now;
+            }
+        }, { passive: false });
+
+        // ================ Shared: Escape / tap-outside exits ================
+
+        document.addEventListener('keydown', function(e) {
+            if (active && e.key === 'Escape') {
+                e.preventDefault();
+                deactivate();
+            }
+        });
+
+        // Tap titlebar, statusbar, or outside terminal → exit Clawd mode
+        document.addEventListener('click', function(e) {
+            if (!active) return;
+            if (!self.body.contains(e.target) && !e.target.closest('#clawd')) {
+                deactivate();
+            }
+        });
+        document.addEventListener('touchstart', function(e) {
+            if (!active) return;
+            var touch = e.touches[0];
+            var bRect = self.body.getBoundingClientRect();
+            var inBody = touch.clientX >= bRect.left && touch.clientX <= bRect.right &&
+                         touch.clientY >= bRect.top && touch.clientY <= bRect.bottom;
+            if (!inBody) {
+                deactivate();
+            }
+        }, { passive: true });
+
         // ---- Activate / deactivate ----
 
-        function activate(e) {
+        function activate(cx, cy) {
             active = true;
             particles = extractCharacters(self.body).map(function(c) {
                 var p = makeParticle(c);
@@ -787,8 +845,8 @@
             if (particles.length === 0) { active = false; return; }
 
             var bRect = self.body.getBoundingClientRect();
-            mouseX = e.clientX - bRect.left;
-            mouseY = e.clientY - bRect.top;
+            mouseX = cx - bRect.left;
+            mouseY = cy - bRect.top;
             clawdX = mouseX;
             clawdY = mouseY;
             prevMouseX = mouseX;
