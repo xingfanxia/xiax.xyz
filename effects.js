@@ -862,6 +862,8 @@
             self.body.style.visibility = 'hidden';
             self.body.style.overflowY = 'hidden';
             windowEl.style.cursor = 'none';
+            windowEl.style.userSelect = 'none';
+            windowEl.style.webkitUserSelect = 'none';
             clawd.style.display = 'block';
             requestAnimationFrame(function() { clawd.style.opacity = '1'; });
             startLoop();
@@ -872,6 +874,8 @@
             mouseDown = false;
             clawd.style.opacity = '0';
             windowEl.style.cursor = '';
+            windowEl.style.userSelect = '';
+            windowEl.style.webkitUserSelect = '';
             setTimeout(function() { clawd.style.display = 'none'; }, 300);
             if (raf) { cancelAnimationFrame(raf); raf = null; }
             self.canvas.hide();
