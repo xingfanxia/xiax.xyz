@@ -445,6 +445,98 @@
 
     // ---- Run ----
 
+    // ---- Live data helpers ----
+
+    function fmtTokens(n) {
+        if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+        if (n >= 1e6) return Math.round(n / 1e6) + 'M';
+        if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+        return String(n);
+    }
+
+    function fmtCost(n) {
+        return n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+
+    function fmtDate(d) {
+        var parts = d.split('-');
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return months[parseInt(parts[1]) - 1] + ' ' + parseInt(parts[2]) + ', ' + parts[0];
+    }
+
+    function buildTokenUsageOutput(data) {
+        var s = data.stats;
+        var lines = [
+            '',
+            '  <span class="output-dim">\u250C\u2500 TOKEN USAGE REPORT \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510</span>',
+            '  <span class="output-dim">\u2502</span>                                        <span class="output-dim">\u2502</span>',
+            '  <span class="output-dim">\u2502</span>  <span class="output-dim">Total Spend</span>    <span class="output-bold">$' + fmtCost(s.totalCost) + '</span>  <span class="output-dim">(' + fmtTokens(s.totalTokens) + ' tokens)</span>',
+            '  <span class="output-dim">\u2502</span>  <span class="output-dim">Daily Average</span>  <span class="output-bold">$' + fmtCost(s.avgCostPerDay) + '/day</span>  <span class="output-dim">(' + fmtTokens(s.avgTokensPerDay) + ' tokens)</span>',
+            '  <span class="output-dim">\u2502</span>  <span class="output-dim">Peak Day</span>      <span class="output-bold">$' + fmtCost(s.peakCost) + '</span>  <span class="output-dim">(' + fmtDate(s.peakDay) + ')</span>',
+            '  <span class="output-dim">\u2502</span>  <span class="output-dim">Tracking</span>      <span class="output-bold">' + s.activeDays + ' days</span>  <span class="output-dim">(' + s.instances + ' instances)</span>',
+            '  <span class="output-dim">\u2502</span>                                        <span class="output-dim">\u2502</span>'
+        ];
+
+        // Monthly breakdown with ASCII bars
+        var monthly = {};
+        for (var i = 0; i < data.chartData.length; i++) {
+            var d = data.chartData[i];
+            var mo = d.date.substring(0, 7);
+            if (!monthly[mo]) monthly[mo] = 0;
+            monthly[mo] += d.cost;
+        }
+        var months = Object.keys(monthly).sort();
+        var maxMo = 0;
+        for (var j = 0; j < months.length; j++) {
+            if (monthly[months[j]] > maxMo) maxMo = monthly[months[j]];
+        }
+
+        lines.push('  <span class="output-dim">\u2502</span>  <span class="output-dim">Monthly:</span>');
+
+        for (var k = 0; k < months.length; k++) {
+            var cost = monthly[months[k]];
+            var barLen = Math.max(1, Math.round((cost / maxMo) * 24));
+            var bar = '';
+            for (var b = 0; b < barLen; b++) bar += '\u2588';
+            var isLatest = k === months.length - 1;
+            var cls = isLatest ? 'output-green' : (k >= months.length - 3 ? 'output-highlight' : 'output-dim');
+            var marker = isLatest ? ' \u25C0' : '';
+            lines.push('  <span class="output-dim">\u2502</span>  <span class="' + cls + '">' + months[k] + '  ' + bar + '</span> <span class="' + cls + '">$' + fmtCost(Math.round(cost)) + marker + '</span>');
+        }
+
+        lines.push('  <span class="output-dim">\u2502</span>                                        <span class="output-dim">\u2502</span>');
+        lines.push('  <span class="output-dim">\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518</span>');
+        lines.push('  <span class="output-dim">Live data from</span> <a href="https://blog.ax0x.ai/token-usage" target="_blank" class="output-link">blog.ax0x.ai/token-usage</a>');
+        lines.push('');
+
+        return lines;
+    }
+
+    function fetchLiveOutput(type, fallbackOutput, cb) {
+        if (type === 'token-usage') {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://blog.ax0x.ai/api/token-usage');
+            xhr.timeout = 5000;
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        cb(buildTokenUsageOutput(data));
+                    } catch (e) {
+                        cb(fallbackOutput);
+                    }
+                } else {
+                    cb(fallbackOutput);
+                }
+            };
+            xhr.onerror = function() { cb(fallbackOutput); };
+            xhr.ontimeout = function() { cb(fallbackOutput); };
+            xhr.send();
+        } else {
+            cb(fallbackOutput);
+        }
+    }
+
     function runSequence(seq, idx) {
         if (idx >= seq.length) {
             var finalLine = addLine(promptMarkup(tabPaths[activeTab] || '~'), '');
@@ -454,9 +546,17 @@
         }
         if (idx > 0) addSeparator();
         typeCommand(seq[idx].cmd, function() {
-            typeOutput(seq[idx].output, function() {
-                runSequence(seq, idx + 1);
-            });
+            if (seq[idx].live) {
+                fetchLiveOutput(seq[idx].live, seq[idx].output, function(output) {
+                    typeOutput(output, function() {
+                        runSequence(seq, idx + 1);
+                    });
+                });
+            } else {
+                typeOutput(seq[idx].output, function() {
+                    runSequence(seq, idx + 1);
+                });
+            }
         });
     }
 
